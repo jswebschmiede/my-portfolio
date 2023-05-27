@@ -1,15 +1,32 @@
 ---
 import { SITE } from '@/config';
-import 'node_modules/aos/dist/aos.css';
 ---
 
 <script>
-    import 'node_modules/vanilla-tilt/dist/vanilla-tilt.min.js';
+    import VanillaTilt from 'vanilla-tilt';
+    import ScrollReveal from 'scrollreveal';
+
+    if (document.querySelector('.tilt')) {
+        VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')), {
+            max: 5,
+            speed: 400,
+            perspective: 500
+        });
+    }
+
+    ScrollReveal().reveal('.reveal-fx', {
+        delay: 300,
+        duration: 400,
+        easing: 'ease-in-out',
+        distance: '50px'
+    });
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
     // Add class to html tag if JavaScript is enabled
     document.getElementsByTagName('html')[0].className += ' js';
+
+    // Scroll reveal
 
     // Add class to html tag if dark theme is enabled
     function applyTheme(theme) {
@@ -63,14 +80,5 @@ import 'node_modules/aos/dist/aos.css';
                 ? 'dark'
                 : 'light';
         });
-
-        // init tilt
-        if (document.querySelector('.tilt')) {
-            VanillaTilt.init(document.querySelectorAll('.tilt'), {
-                max: 5,
-                speed: 400,
-                perspective: 500
-            });
-        }
     };
 </script>

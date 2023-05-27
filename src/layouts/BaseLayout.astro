@@ -34,6 +34,11 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
         class='h-full min-h-screen w-full bg-whitegreen-500 font-sans text-black-500 antialiased'>
         <slot />
         <style is:global>
+            html.sr .load-hidden,
+            .reveal-fx {
+                @apply invisible;
+            }
+
             h1,
             h2,
             h3,
