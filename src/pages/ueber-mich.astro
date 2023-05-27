@@ -1,0 +1,86 @@
+---
+import { Image } from '@astrojs/image/components';
+import { SITE } from '@/config';
+import Layout from '@/layouts/PageLayout.astro';
+
+import handcoding from '@/assets/hand-coding-bro.svg';
+import Skill from '@/components/ui/Skill.astro';
+import CountItem from '@/components/ui/CountItem.astro';
+
+const meta = {
+    title: 'Über mich',
+    description: 'Home page description'
+};
+
+const { skills } = SITE;
+---
+
+<Layout {meta}>
+    <article>
+        <div
+            class='container grid max-w-6xl items-center gap-12 py-32 lg:grid-cols-12'>
+            <div class='lg:col-span-4'>
+                <div class='prose'>
+                    <h1 class='text-7xl'>Über mich</h1>
+                    <p>
+                        Hallo ich bin Jörg, ich bin ein leidenschaftlicher
+                        Webentwickler mit mehr als 8 Jahren Erfahrung in der
+                        Erstellung von ansprechenden und funktionalen
+                        Webanwendungen.
+                    </p>
+                    <p>
+                        Mein Ziel ist es, maßgeschneiderte Lösungen zu
+                        entwickeln, die den Anforderungen meiner Kunden
+                        entsprechen und gleichzeitig ein reibungsloses
+                        Benutzererlebnis bieten.
+                    </p>
+                </div>
+            </div>
+            <div class='lg:col-span-6'>
+                <Image
+                    class='tilt w-full'
+                    src={handcoding}
+                    alt='Hand Coding'
+                />
+            </div>
+            <div class='space-y-24 lg:col-span-2'>
+                <CountItem
+                    count={40}
+                    label='Zufriedene Kunden'
+                />
+                <CountItem
+                    count={90}
+                    label='Projekte abgeschlossen'
+                />
+                <CountItem
+                    count={8}
+                    label='Jahre Erfahrung'
+                />
+            </div>
+        </div>
+    </article>
+
+    <article>
+        <div
+            id='skills'
+            class='container grid max-w-7xl pb-32 pt-16'>
+            <h2 class='mb-12 text-center text-7xl font-black'>Meine Skills</h2>
+            <div
+                class='relative flex w-full items-center justify-center bg-circularLight h-[50vh] rounded-[50%] sm:h-[60vh] md:h-[80vh] md:bg-circularLightMd lg:h-screen lg:bg-circularLightLg'>
+                <div
+                    class='absolute flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-black-500 shadow-custom md:h-20 md:w-20 md:text-base'>
+                    Web
+                </div>
+                {
+                    skills.map((skill) => (
+                        <Skill
+                            x={skill.x}
+                            y={skill.y}>
+                            {skill.name}
+                        </Skill>
+                    ))
+                }
+            </div>
+        </div>
+    </article>
+</Layout>
