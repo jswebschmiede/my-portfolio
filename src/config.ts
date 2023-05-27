@@ -1,5 +1,5 @@
 const SiteConfig = {
-    siteName: 'AstroBlog',
+    siteName: 'Jörg Schöneburg - Full-Stack-Entwickler',
     defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
     language: 'de',
     textDirection: 'ltr',
@@ -9,16 +9,26 @@ const SiteConfig = {
             href: '/'
         },
         {
-            name: 'About',
-            href: '/about'
+            name: 'Über mich',
+            href: '/ueber-mich'
         },
         {
-            name: 'Categories',
-            href: '/categories'
+            name: 'Projekte',
+            href: '/projekte'
+        }
+    ],
+    footerLinks: [
+        {
+            name: 'Impressum',
+            href: '/impressum'
         },
         {
-            name: 'Contact',
-            href: '/contact'
+            name: 'Datenschutz',
+            href: '/datenschutz'
+        },
+        {
+            name: 'AGB',
+            href: '/agb'
         }
     ]
 };

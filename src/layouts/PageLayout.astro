@@ -1,9 +1,42 @@
 ---
+import { Image } from '@astrojs/image/components';
+import Header from '@/components/ui/Header.astro';
+import Footer from '@/components/ui/Footer.astro';
 import Layout from '@/layouts/BaseLayout.astro';
+
+import star from '@/assets/star.svg';
+import ellip from '@/assets/ellip.svg';
 
 const { meta } = Astro.props;
 ---
 
 <Layout {meta}>
-    <slot />
+    <div class='site relative'>
+        <Image
+            class='absolute right-0 bottom-1/3'
+            src={star}
+            alt=''
+            aria-hidden='true'
+        />
+        <Image
+            class='absolute bottom-44 left-0'
+            src={ellip}
+            alt=''
+            aria-hidden='true'
+        />
+
+        <slot name='header'>
+            <Header />
+        </slot>
+
+        <main
+            class='site-content'
+            id='content'>
+            <slot />
+        </main>
+
+        <slot name='footer'>
+            <Footer />
+        </slot>
+    </div>
 </Layout>

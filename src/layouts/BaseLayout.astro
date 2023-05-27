@@ -6,6 +6,12 @@ import '@fontsource/poppins/300.css';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import '@fontsource/catamaran/600.css';
+import '@fontsource/catamaran/700.css';
+import '@fontsource/catamaran/800.css';
+import '@fontsource/catamaran/900.css';
 
 export interface Props {
     meta?: MetaSEO;
@@ -19,25 +25,31 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 <html
     lang={language}
     dir={textDirection}
-    class='2xl:text-[20px] bg-bg-page text-text-page antialiased'>
+    class='scrollbar-rounded-lg scroll-smooth scrollbar-thin scrollbar-track-black-500 scrollbar-thumb-orange-500 scrollbar-thumb-rounded'>
     <head>
         <MetaTags {...meta} />
     </head>
-    <body>
+    <body
+        class='h-full min-h-screen w-full bg-whitegreen-500 font-sans text-black-500 antialiased'>
         <slot />
         <style is:global>
-            :root {
-                --font-sans: 'Poppins', sans-serif;
-                --font-serif: var(--font-sans);
-                --font-heading: var(--font-sans);
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                @apply font-heading font-black;
+            }
 
-                --color-primary: rgb(30 64 175);
-                --color-secondary: rgb(30 58 138);
-                --color-accent: rgb(109 40 217);
-                --color-text-page: rgb(17 24 39);
-                --color-text-muted: rgb(75 85 99);
-                --color-bg-page: rgb(255 255 255);
+            h1,
+            h2 {
+                @apply text-7xl;
             }
         </style>
+
+        <script is:inline>
+            document.getElementsByTagName('html')[0].className += ' js';
+        </script>
     </body>
 </html>

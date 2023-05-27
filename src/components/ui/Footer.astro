@@ -1,0 +1,32 @@
+---
+import { SITE } from '@/config';
+
+const { footerLinks } = SITE;
+---
+
+<footer
+    class='main-footer mt-12 border-t-2 border-black-500'
+    id='mastfooter'>
+    <div class='container max-w-6xl py-8'>
+        <div class='flex justify-between'>
+            <p class='font-bold uppercase'>
+                © {new Date().getFullYear()} Jörg Schöneburg - All rights reserved
+            </p>
+
+            <nav class='flex gap-8 font-bold'>
+                {
+                    footerLinks.map(({ href, name }) => (
+                        <a
+                            class='font-bold uppercase group relative lg:text-light lg:dark:text-dark'
+                            href={href}>
+                            {name}
+                            <span class='absolute -bottom-1 left-0 inline-block w-0 bg-black-200 duration-300 h-[3px] transition-[width] group-hover:w-5'>
+                                &nbsp;
+                            </span>
+                        </a>
+                    ))
+                }
+            </nav>
+        </div>
+    </div>
+</footer>

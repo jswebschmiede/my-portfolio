@@ -1,0 +1,58 @@
+---
+import { Image } from '@astrojs/image/components';
+import { SITE } from '@/config';
+import Button from '@/components/ui/Button.astro';
+import moonFilled from '@/assets/moon-filled-transition.svg';
+
+const navItems = SITE.links;
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+    <ul class='flex items-center justify-center space-x-10 font-bold uppercase'>
+        {
+            navItems.map((item) => (
+                <li>
+                    <a
+                        href={item.href}
+                        class='group relative lg:text-light lg:dark:text-dark'>
+                        <span
+                            class={`absolute -bottom-1 left-0 inline-block ${
+                                currentPath === item.href
+                                    ? 'w-5 bg-black-800 '
+                                    : 'w-0 bg-black-200 '
+                            } duration-300 h-[3px] transition-[width] group-hover:w-5`}>
+                            &nbsp;
+                        </span>
+                        {item.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<nav class='flex flex-wrap items-center justify-center gap-5'>
+    <Button
+        classAppend='max-h-10'
+        href='/kontakt'>
+        Kontakt
+    </Button>
+    <button
+        class='flex items-center justify-center rounded-full bg-black-500 p-2 text-whitegreen-100'
+        aria-label='Theme Switcher'>
+        <Image
+            src={moonFilled}
+            alt=''
+            aria-hidden='true'
+        />
+    </button>
+</nav>
+
+<div class='absolute -top-4 left-[50%] translate-x-[-50%]'>
+    <a
+        href='/'
+        class='font-heading flex h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-black-500 bg-orange-500 pl-1 pt-[0.31rem] text-[34px] font-black shadow-custom transition-shadow duration-200 hover:shadow-none'>
+        JS
+    </a>
+</div>
