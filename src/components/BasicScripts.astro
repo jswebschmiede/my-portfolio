@@ -1,0 +1,76 @@
+---
+import { SITE } from '@/config';
+import 'node_modules/aos/dist/aos.css';
+---
+
+<script>
+    import 'node_modules/vanilla-tilt/dist/vanilla-tilt.min.js';
+</script>
+
+<script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+    // Add class to html tag if JavaScript is enabled
+    document.getElementsByTagName('html')[0].className += ' js';
+
+    // Add class to html tag if dark theme is enabled
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }
+
+    // Attach event to element
+    function attachEvent(selector, event, fn) {
+        const matches =
+            typeof selector === 'string'
+                ? document.querySelectorAll(selector)
+                : selector;
+        if (matches && matches.length) {
+            matches.forEach((elem) => {
+                elem.addEventListener(event, (e) => fn(e, elem), false);
+            });
+        }
+    }
+
+    // Apply theme
+    if (
+        (defaultTheme && defaultTheme.endsWith(':only')) ||
+        (!localStorage.theme && defaultTheme !== 'system')
+    ) {
+        applyTheme(defaultTheme.replace(':only', ''));
+    } else if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+        applyTheme('dark');
+    } else {
+        applyTheme('light');
+    }
+
+    // on load
+    window.onload = function () {
+        // Toggle dark mode
+        attachEvent('[data-toggle-color-scheme]', 'click', function () {
+            if (defaultTheme.endsWith(':only')) {
+                return;
+            }
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains(
+                'dark'
+            )
+                ? 'dark'
+                : 'light';
+        });
+
+        // init tilt
+        if (document.querySelector('.tilt')) {
+            VanillaTilt.init(document.querySelectorAll('.tilt'), {
+                max: 5,
+                speed: 400,
+                perspective: 500
+            });
+        }
+    };
+</script>
