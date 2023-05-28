@@ -14,5 +14,9 @@ export default defineConfig({
         image({
             serviceEntryPoint: '@astrojs/image/sharp'
         })
-    ]
+    ],
+
+    buildOptions: {
+        canonicalBaseUrl: 'https://master.dpoxj8hd9osr0.amplifyapp.com/'
+    }
 });
