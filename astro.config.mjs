@@ -2,10 +2,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import prefetch from '@astrojs/prefetch';
-
 import image from '@astrojs/image';
 
-// https://astro.build/config
 export default defineConfig({
     integrations: [
         sitemap(),
@@ -15,8 +13,5 @@ export default defineConfig({
             serviceEntryPoint: '@astrojs/image/sharp'
         })
     ],
-
-    site: {
-        url: 'https://master.dpoxj8hd9osr0.amplifyapp.com/'
-    }
+    site: 'https://master.dpoxj8hd9osr0.amplifyapp.com/'
 });
