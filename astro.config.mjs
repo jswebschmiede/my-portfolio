@@ -16,7 +16,7 @@ export default defineConfig({
         })
     ],
 
-    buildOptions: {
-        canonicalBaseUrl: 'https://master.dpoxj8hd9osr0.amplifyapp.com/'
+    site: {
+        url: 'https://master.dpoxj8hd9osr0.amplifyapp.com/'
     }
 });
