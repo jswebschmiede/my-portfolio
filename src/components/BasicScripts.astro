@@ -46,6 +46,8 @@ import { SITE } from '@/config';
     const unload = () => {
         // unload tilt
         VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')));
+        // unload scroll reveal
+        ScrollReveal().clean('.reveal-fx');
     };
 
     // run once when page loads
