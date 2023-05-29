@@ -15,7 +15,8 @@ const currentPath = Astro.url.pathname;
                 <li>
                     <a
                         href={item.href}
-                        class='group relative lg:text-light lg:dark:text-dark'>
+                        class='group relative lg:text-light lg:dark:text-dark'
+                        rel='prefetch'>
                         <span
                             class={`absolute -bottom-1 left-0 inline-block ${
                                 currentPath === item.href
