@@ -3,6 +3,7 @@ import { Image } from '@astrojs/image/components';
 import { SITE } from '@/config';
 import Button from '@/components/ui/Button.astro';
 import moonFilled from '@/assets/moon-filled-transition.svg';
+import sunnyFilled from '@/assets/sunny-filled-loop-transition.svg';
 
 const navItems = SITE.links;
 ---
@@ -37,9 +38,17 @@ const navItems = SITE.links;
     <button
         class='flex items-center justify-center rounded-full bg-black-500 p-2 text-whitegreen-100'
         aria-label='Theme Switcher'
+        title='Switch between light and dark theme'
         data-toggle-color-scheme>
         <Image
+            id='moon'
             src={moonFilled}
+            alt=''
+            aria-hidden='true'
+        />
+        <Image
+            id='sunny'
+            src={sunnyFilled}
             alt=''
             aria-hidden='true'
         />
