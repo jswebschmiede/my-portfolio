@@ -35,11 +35,31 @@ import { SITE } from '@/config';
             });
         }
 
+        // init scroll reveal
         ScrollReveal().reveal('.reveal-fx', {
             delay: 300,
             duration: 400,
             easing: 'ease-in-out',
             distance: '50px'
+        });
+
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = Array.from(mainNav.querySelectorAll('a'));
+
+        // set aria-current and active nav link
+        navLinks.forEach((link) => {
+            const href = link.getAttribute('href');
+            const path = window.location.pathname;
+            const span = link.children[0];
+
+            if (href === path) {
+                link.setAttribute('aria-current', 'page');
+                span.classList.add(['w-5'], ['bg-black-800']);
+            } else {
+                link.removeAttribute('aria-current');
+                span.classList.remove(['w-5'], ['bg-black-800']);
+                span.classList.add(['w-0'], ['bg-black-200']);
+            }
         });
     };
 
@@ -67,8 +87,6 @@ import { SITE } from '@/config';
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
     // Add class to html tag if JavaScript is enabled
     document.getElementsByTagName('html')[0].className += ' js';
-
-    // Scroll reveal
 
     // Add class to html tag if dark theme is enabled
     function applyTheme(theme) {
