@@ -86,31 +86,22 @@ import { SITE } from '@/config';
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
     // Add class to html tag if JavaScript is enabled
-    document.getElementsByTagName('html')[0].className += ' js';
+    document.documentElement.classList.add('js');
 
     // Toggle dark mode icon
     function toggleDarkmodeIcon() {
         const moon = document.getElementById('moon');
         const sunny = document.getElementById('sunny');
+        const isDarkMode = document.documentElement.classList.contains('dark');
 
-        if (document.documentElement.classList.contains('dark')) {
-            sunny.classList.add('hidden');
-            moon.classList.remove('hidden');
-        } else {
-            sunny.classList.remove('hidden');
-            moon.classList.add('hidden');
-        }
+        sunny.classList.toggle('hidden', isDarkMode);
+        moon.classList.toggle('hidden', !isDarkMode);
     }
 
     // Add class to html tag if dark theme is enabled
     function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-            toggleDarkmodeIcon();
-        } else {
-            document.documentElement.classList.remove('dark');
-            toggleDarkmodeIcon();
-        }
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        toggleDarkmodeIcon();
     }
 
     // Attach event to element
@@ -127,7 +118,6 @@ import { SITE } from '@/config';
     }
 
     // Apply theme
-
     if (
         (defaultTheme && defaultTheme.endsWith(':only')) ||
         (!localStorage.theme && defaultTheme !== 'system')
@@ -157,12 +147,7 @@ import { SITE } from '@/config';
             )
                 ? 'dark'
                 : 'light';
-
-            if (localStorage.theme === 'dark') {
-                toggleDarkmodeIcon();
-            } else {
-                toggleDarkmodeIcon();
-            }
+            toggleDarkmodeIcon();
         });
     };
 </script>
