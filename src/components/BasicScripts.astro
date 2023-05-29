@@ -88,12 +88,28 @@ import { SITE } from '@/config';
     // Add class to html tag if JavaScript is enabled
     document.getElementsByTagName('html')[0].className += ' js';
 
+    // Toggle dark mode icon
+    function toggleDarkmodeIcon() {
+        const moon = document.getElementById('moon');
+        const sunny = document.getElementById('sunny');
+
+        if (document.documentElement.classList.contains('dark')) {
+            sunny.classList.add('hidden');
+            moon.classList.remove('hidden');
+        } else {
+            sunny.classList.remove('hidden');
+            moon.classList.add('hidden');
+        }
+    }
+
     // Add class to html tag if dark theme is enabled
     function applyTheme(theme) {
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
+            toggleDarkmodeIcon();
         } else {
             document.documentElement.classList.remove('dark');
+            toggleDarkmodeIcon();
         }
     }
 
@@ -111,6 +127,7 @@ import { SITE } from '@/config';
     }
 
     // Apply theme
+
     if (
         (defaultTheme && defaultTheme.endsWith(':only')) ||
         (!localStorage.theme && defaultTheme !== 'system')
@@ -133,12 +150,19 @@ import { SITE } from '@/config';
             if (defaultTheme.endsWith(':only')) {
                 return;
             }
+
             document.documentElement.classList.toggle('dark');
             localStorage.theme = document.documentElement.classList.contains(
                 'dark'
             )
                 ? 'dark'
                 : 'light';
+
+            if (localStorage.theme === 'dark') {
+                toggleDarkmodeIcon();
+            } else {
+                toggleDarkmodeIcon();
+            }
         });
     };
 </script>
