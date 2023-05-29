@@ -11,6 +11,7 @@ import { SITE } from '@/config';
     import SwupBodyClassPlugin from '@swup/body-class-plugin';
     import SwupHeadPlugin from '@swup/head-plugin';
     import SwupOverlayTheme from '@swup/overlay-theme';
+    import '../lib/scrollfx.js';
 
     const swup = new Swup({
         plugins: [
@@ -35,9 +36,19 @@ import { SITE } from '@/config';
             });
         }
 
+        var scrollFx = document.getElementsByClassName('js-scroll-fx');
+        for (var i = 0; i < scrollFx.length; i++) {
+            (function (i) {
+                var scrollableElement = scrollFx[i].getAttribute(
+                    'data-scrollable-element'
+                );
+                new ScrollFx(scrollFx[i], scrollableElement);
+            })(i);
+        }
+
         // init scroll reveal
         ScrollReveal().reveal('.reveal-fx', {
-            delay: 300,
+            delay: 500,
             duration: 400,
             easing: 'ease-in-out',
             distance: '50px'
