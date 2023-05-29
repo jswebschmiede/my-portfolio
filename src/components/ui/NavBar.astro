@@ -8,7 +8,7 @@ const navItems = SITE.links;
 const currentPath = Astro.url.pathname;
 ---
 
-<nav>
+<nav id='main-nav'>
     <ul class='flex items-center justify-center space-x-10 font-bold uppercase'>
         {
             navItems.map((item) => (
@@ -18,11 +18,7 @@ const currentPath = Astro.url.pathname;
                         class='group relative lg:text-light lg:dark:text-dark'
                         rel='prefetch'>
                         <span
-                            class={`absolute -bottom-1 left-0 inline-block ${
-                                currentPath === item.href
-                                    ? 'w-5 bg-black-800 '
-                                    : 'w-0 bg-black-200 '
-                            } duration-300 h-[3px] transition-[width] group-hover:w-5`}>
+                            class={`absolute -bottom-1 left-0 inline-block duration-300 h-[3px] transition-[width] group-hover:w-5`}>
                             &nbsp;
                         </span>
                         {item.name}
