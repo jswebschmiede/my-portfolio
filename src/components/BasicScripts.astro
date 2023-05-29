@@ -3,23 +3,63 @@ import { SITE } from '@/config';
 ---
 
 <script>
+    //@ts-nocheck
     import VanillaTilt from 'vanilla-tilt';
     import ScrollReveal from 'scrollreveal';
+    import Swup from 'swup';
+    import SwupA11yPlugin from '@swup/a11y-plugin';
+    import SwupBodyClassPlugin from '@swup/body-class-plugin';
+    import SwupHeadPlugin from '@swup/head-plugin';
+    import SwupOverlayTheme from '@swup/overlay-theme';
 
-    if (document.querySelector('.tilt')) {
-        VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')), {
-            max: 5,
-            speed: 400,
-            perspective: 500
+    const swup = new Swup({
+        plugins: [
+            new SwupBodyClassPlugin(),
+            new SwupA11yPlugin(),
+            new SwupHeadPlugin(),
+            new SwupOverlayTheme({
+                color: '#FC7942',
+                duration: 800,
+                direction: 'to-right'
+            })
+        ]
+    });
+
+    const init = () => {
+        // init tilt
+        if (document.querySelector('.tilt')) {
+            VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')), {
+                max: 5,
+                speed: 400,
+                perspective: 500
+            });
+        }
+
+        ScrollReveal().reveal('.reveal-fx', {
+            delay: 300,
+            duration: 400,
+            easing: 'ease-in-out',
+            distance: '50px'
         });
+    };
+
+    const unload = () => {
+        // unload tilt
+        VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')));
+    };
+
+    // run once when page loads
+    if (document.readyState === 'complete') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', () => init());
     }
 
-    ScrollReveal().reveal('.reveal-fx', {
-        delay: 300,
-        duration: 400,
-        easing: 'ease-in-out',
-        distance: '50px'
-    });
+    // run after every additional navigation by swup
+    swup.on('contentReplaced', init);
+
+    // cleanup all the instances, listeners and mess we have made when page was loaded
+    swup.on('willReplaceContent', unload);
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
