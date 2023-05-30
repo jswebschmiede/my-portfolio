@@ -31,9 +31,9 @@ import { SITE } from '@/config';
         // init tilt
         if (document.querySelector('.tilt')) {
             VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')), {
-                max: 5,
+                max: 1.25,
                 speed: 400,
-                perspective: 500
+                perspective: 1000
             });
         }
 
@@ -69,11 +69,11 @@ import { SITE } from '@/config';
 
             if (href === path) {
                 link.setAttribute('aria-current', 'page');
-                span.classList.add(['w-5'], ['bg-black-800']);
+                span.classList.add('w-5', 'bg-black-800');
             } else {
                 link.removeAttribute('aria-current');
-                span.classList.remove(['w-5'], ['bg-black-800']);
-                span.classList.add(['w-0'], ['bg-black-200']);
+                span.classList.remove('w-5', 'bg-black-800');
+                span.classList.add('w-0', 'bg-black-200');
             }
         });
     };
