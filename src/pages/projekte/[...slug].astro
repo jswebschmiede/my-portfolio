@@ -29,9 +29,7 @@ const meta = {
 ---
 
 <Layout {meta}>
-    <div class='container grid max-w-6xl items-center gap-12 py-32'>
-        <h1 class='mb-16 text-center'>{project.data.title}</h1>
-
+    <div class='container py-32'>
         <Image
             src={project.data.image.src}
             width={1200}
@@ -44,12 +42,18 @@ const meta = {
 
         <div class='flex gap-4'>
             {
-                project.data.tags.map((tag) => (
-                    <Button href={`/tags/${tag.toLowerCase()}`}>#{tag}</Button>
+                project.data.tags.map((tag: string) => (
+                    <Button
+                        href={`/tags/${tag.toLowerCase()}`}
+                        classAppend={'max-h-10'}>
+                        #{tag}
+                    </Button>
                 ))
             }
         </div>
-        <div class='prose'>
+        <h1 class='-mt-4'>{project.data.title}</h1>
+
+        <div class='prose max-w-none'>
             <Content />
         </div>
     </div>

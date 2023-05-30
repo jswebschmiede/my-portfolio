@@ -3,7 +3,8 @@ module.exports = {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
         container: {
-            center: true
+            center: true,
+            padding: '1rem'
         },
         colors: {
             black: {
@@ -58,6 +59,31 @@ module.exports = {
             },
             transitionProperty: {
                 mouse: 'width, height, margin, opacity'
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        color: '#1e1e1e',
+                        h1: {
+                            fontSize: '4.5rem',
+                            lineHeight: 1,
+                            marginBottom: '2.25rem',
+                            color: '#1e1e1e'
+                        },
+                        h2: {
+                            fontSize: '4.5rem',
+                            lineHeight: 1,
+                            marginBottom: '2.25rem',
+                            color: '#1e1e1e'
+                        },
+                        h3: {
+                            fontSize: '2.5rem',
+                            lineHeight: '2rem',
+                            marginBottom: '2.25rem',
+                            color: '#1e1e1e'
+                        }
+                    }
+                }
             },
 
             boxShadow: ({ theme }) => ({

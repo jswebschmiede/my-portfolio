@@ -1,0 +1,29 @@
+---
+interface Props {
+    client: string;
+    handover: string;
+    services: string;
+    website: string;
+}
+
+const { client, handover, services, website } = Astro.props;
+---
+
+<div class='grid grid-cols-12 gap-16 border-t-2 mt-8'>
+    <div class='col-span-3'>
+        <h3 class='text-2xl mb-0 font-black'>Kunde:</h3>
+        <p class='text-xl font-heading font-bold text-orange-500'>{client}</p>
+    </div>
+    <div class='col-span-3'>
+        <h3 class='text-2xl mb-0 font-black'>Fertiggestellt:</h3>
+        <p class='text-xl font-heading font-bold text-orange-500'>{handover}</p>
+    </div>
+    <div class='col-span-3'>
+        <h3 class='text-2xl mb-0 font-black'>Leistung:</h3>
+        <p class='text-xl font-heading font-bold text-orange-500'>{services}</p>
+    </div>
+    <div class='col-span-3'>
+        <h3 class='text-2xl mb-0 font-black'>Webseite:</h3>
+        <p class='text-xl font-heading font-bold text-orange-500'>{website}</p>
+    </div>
+</div>
