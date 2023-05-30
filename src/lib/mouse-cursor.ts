@@ -33,6 +33,7 @@ function followCursor(): void {
                 ) as HTMLElement;
 
                 if (
+                    target &&
                     target.matches('a, .cursor-pointer') &&
                     cursorInner &&
                     cursorOuter
