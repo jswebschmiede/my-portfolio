@@ -6,6 +6,7 @@ import Layout from '@/layouts/PageLayout.astro';
 import handcoding from '@/assets/hand-coding-bro.svg';
 import Skill from '@/components/ui/Skill.astro';
 import CountItem from '@/components/ui/CountItem.astro';
+import ResumeItem from '@/components/ui/ResumeItem.astro';
 
 const meta = {
     title: 'Über mich',
@@ -80,6 +81,80 @@ const { skills } = SITE;
                         </Skill>
                     ))
                 }
+            </div>
+        </div>
+    </article>
+
+    <article class='reveal-fx'>
+        <h2 class='text-center'>Lebenlauf</h2>
+        <div class='container grid max-w-3xl gap-24 py-28 lg:grid-cols-12'>
+            <div class='lg:col-span-12'>
+                <h3 class='text-4xl pb-14'>Beruflicher Werdegang</h3>
+                <ul
+                    class='relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800'>
+                    <ResumeItem
+                        title='Webentwickler'
+                        company='Freelancer'
+                        date='09/2012 - heute'>
+                        <p class='font-bold'>Aufgabenschwerpunkte:</p>
+                        <p>
+                            Webprogrammierung mit PHP und Javascript, CMS System
+                            und deren Templating
+                        </p>
+                    </ResumeItem>
+                    <ResumeItem
+                        title='Frontend Entwickler'
+                        company='St. Sportservice'
+                        date='09/2009 - 04/2012'>
+                        <p class='font-bold'>Aufgabenschwerpunkte:</p>
+                        <p>
+                            Umsetzen von Webseiten und Web Applikationen mit
+                            HTML, CSS und Javascript.
+                        </p>
+                    </ResumeItem>
+                </ul>
+            </div>
+            <div class='lg:col-span-12'>
+                <h3 class='text-4xl pb-14'>Aus -und Weiterbildung</h3>
+                <ul
+                    class='relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800'>
+                    <ResumeItem
+                        title='E-Learning'
+                        company='udemy'
+                        date='09/2012 - heute'>
+                        <p>
+                            Studium verschiedener Kurse im Bereich
+                            Webentwicklung, darunter:
+                        </p>
+                        <ul class='list-disc pl-8'>
+                            <li>
+                                Understanding TypeScript (Maximilian
+                                Schwarzmüller)
+                            </li>
+                            <li>
+                                JavaScript - The Complete Guide 2023 (Beginner +
+                                Advanced) (Maximilian Schwarzmüller)
+                            </li>
+                            <li>
+                                React - The Complete Guide (incl Hooks, React
+                                Router, Redux) (Maximilian Schwarzmüller)
+                            </li>
+                            <li>
+                                Next.js & React - The Complete Guide (incl. Two
+                                Paths!) (Maximilian Schwarzmüller)
+                            </li>
+                        </ul>
+                    </ResumeItem>
+                    <ResumeItem
+                        title='Fortbildung'
+                        company='Robotron'
+                        date='09/2009 - 04/2010'>
+                        <p>
+                            Fortbildungslehrgang zum Webdesigner, im Robotron
+                            Bildungszentrum in Halle
+                        </p>
+                    </ResumeItem>
+                </ul>
             </div>
         </div>
     </article>

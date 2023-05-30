@@ -35,7 +35,7 @@ const SiteConfig = {
         {
             name: 'CSS',
             x: '-10vw',
-            y: '-10vw'
+            y: '-9vw'
         },
         {
             name: 'HTML',
@@ -60,7 +60,7 @@ const SiteConfig = {
         {
             name: 'React',
             x: '0vw',
-            y: '12vw'
+            y: '11vw'
         },
         {
             name: 'Tailwind',
@@ -75,7 +75,7 @@ const SiteConfig = {
         {
             name: 'PHP',
             x: '12vw',
-            y: '-16vw'
+            y: '-12vw'
         },
         {
             name: 'Web Design',
