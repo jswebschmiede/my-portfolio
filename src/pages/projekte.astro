@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from '@astrojs/image/components';
 import Layout from '@/layouts/PageLayout.astro';
-import Button from '@/components/ui/Button.astro';
+import ProjectFeatured from '@/components/projects/ProjectFeatured.astro';
+import Project from '@/components/projects/Project.astro';
+
 const meta = {
     title: 'Projekte',
     description: 'Home page description'
@@ -15,35 +16,15 @@ const allProjects = await getCollection('projects');
     <div class='container grid max-w-6xl items-center gap-12 py-32'>
         <h1 class='mb-16 text-center'>Projekte</h1>
 
-        <div class='grid grid-cols-12'>
+        <div class='grid grid-cols-12 gap-12'>
             {
-                allProjects.map((project) => (
-                    <article class='col-span-6'>
-                        <div class='border-2 bg-whitegreen-100 p-10 shadow-custom'>
-                            <Image
-                                src={project.data.image.src}
-                                width={490}
-                                height={276}
-                                alt={project.data.image.alt}
-                                aspectRatio='16:9'
-                                class='mb-10 border-2'
-                            />
-                            <p class='mb-1 text-sm font-bold text-orange-500'>
-                                <span class='mr-2'>
-                                    {project.data.tags.join(', ')}
-                                </span>
-                            </p>
-                            <h3 class='mt-0 mb-5 text-5xl font-black'>
-                                {project.data.title}
-                            </h3>
-                            <Button
-                                href={project.slug}
-                                variant='secondary'>
-                                Projekt anzeigen
-                            </Button>
-                        </div>
-                    </article>
-                ))
+                allProjects.map((project) =>
+                    project.data.isFeatured ? (
+                        <ProjectFeatured project={project} />
+                    ) : (
+                        <Project project={project} />
+                    )
+                )
             }
         </div>
     </div>

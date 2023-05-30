@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/PageLayout.astro';
+import Project from '@/components/projects/Project.astro';
+
+const { slug } = Astro.params;
+const { tags } = Astro.props;
+
+export async function getStaticPaths() {
+    const allProjects = await getCollection('projects');
+    const tags = allProjects.map((project) => project.data.tags);
+    const uniqueTags = Array.from(new Set(tags.flat()));
+
+    return [
+        ...new Set(allProjects.map((project) => project.data.tags).flat())
+    ].map((tag) => ({
+        params: { slug: tag },
+        props: { tags: uniqueTags }
+    }));
+}
+
+const allProjectsWithTag = await getCollection('projects', (project) =>
+    project.data.tags.some((tag) => tag === slug)
+);
+
+const meta = {
+    title: `Projekte in #${slug}`,
+    description: `Projekte mit dem tag #${slug}`
+};
+---
+
+<Layout {meta}>
+    <div class='container grid max-w-6xl items-center gap-12 py-32'>
+        <h1 class='mb-16 text-center'>
+            Projekte in
+            <span class='text-orange-500 first-letter:uppercase'>#{slug}</span>
+        </h1>
+        {tags.join(', ')}
+        <div class='grid grid-cols-12 gap-12'>
+            {allProjectsWithTag.map((project) => <Project project={project} />)}
+        </div>
+    </div>
+</Layout>
