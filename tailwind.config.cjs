@@ -56,6 +56,10 @@ module.exports = {
                 sans: 'Poppins, sans-serif',
                 heading: 'Catamaran, sans-serif'
             },
+            transitionProperty: {
+                mouse: 'width, height, margin, opacity'
+            },
+
             boxShadow: ({ theme }) => ({
                 custom: `4px 4px 0 ${theme('colors.black.500')}`
             }),
