@@ -11,8 +11,8 @@ import { SITE } from '@/config';
     import SwupBodyClassPlugin from '@swup/body-class-plugin';
     import SwupHeadPlugin from '@swup/head-plugin';
     import SwupOverlayTheme from '@swup/overlay-theme';
-    import { followCursor } from '../lib/mouse-cursor.ts';
-    import '../lib/scrollfx.js';
+    import { followCursor } from '../lib/mouse-cursor';
+    import '../lib/scrollfx';
 
     const swup = new Swup({
         plugins: [
@@ -80,9 +80,11 @@ import { SITE } from '@/config';
 
     const unload = () => {
         // unload tilt
-        document.querySelectorAll('.tilt').forEach((el) => {
-            el.vanillaTilt.destroy();
-        });
+        if (document.querySelector('.tilt')) {
+            document.querySelectorAll('.tilt').forEach((el) => {
+                el.vanillaTilt.reset();
+            });
+        }
         // unload scroll reveal
         ScrollReveal().clean('.reveal-fx');
     };
