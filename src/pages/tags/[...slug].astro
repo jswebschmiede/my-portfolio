@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const allProjectsWithTag = await getCollection('projects', (project) =>
-    project.data.tags.some((tag) => tag === slug)
+    project.data.tags.some((tag: string) => tag === slug)
 );
 
 const meta = {

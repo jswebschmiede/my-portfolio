@@ -1,5 +1,8 @@
 // File#: _1_scrolling-animations
 // Usage: codyhouse.co/license
+// deactivate typescript check because of conflict with smoothscroll polyfill
+// @ts-nocheck
+
 (function () {
     var ScrollFx = function (element, scrollableSelector) {
         this.element = element;
