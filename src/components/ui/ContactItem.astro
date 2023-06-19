@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+    icon: string;
+    title: string;
+    text: string;
+    isMail?: boolean;
+}
+
+const { icon, title, text, isMail = false } = Astro.props;
+---
+
+<li class='mb-8'>
+    <div class='flex items-center'>
+        <div
+            class='font-heading text-center relative flex h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-black-500 bg-orange-500 pl-1 pt-[0.31rem] text-[34px] font-black shadow-custom transition-shadow duration-200 hover:shadow-none after:absolute after:left-full after:top-1/2 after:w-10 after:h-[3px] after:mt-[-1px] after:bg-black-500'>
+            <Icon
+                class='w-6 h-6'
+                name={icon}
+            />
+        </div>
+
+        <div class='pl-20'>
+            <h4>{title}</h4>
+
+            <p class='text-sm text-gray-500'>
+                {
+                    isMail ? (
+                        <p>
+                            <a href={`mailto:${text}`}>{text}</a>
+                        </p>
+                    ) : (
+                        <p>{text}</p>
+                    )
+                }
+            </p>
+        </div>
+    </div>
+</li>
