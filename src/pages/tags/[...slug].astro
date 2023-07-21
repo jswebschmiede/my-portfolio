@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/PageLayout.astro';
 import Project from '@/components/projects/Project.astro';
+import Button from '@/components/ui/Button.astro';
 
 const { slug } = Astro.params;
 const { tags } = Astro.props;
@@ -35,7 +36,17 @@ const meta = {
             Projekte in
             <span class='text-orange-500 first-letter:uppercase'>#{slug}</span>
         </h1>
-        {tags.join(', ')}
+        <div class='flex justify-center gap-4 pt-5 pb-12'>
+            {
+                tags.map((tag: string) => (
+                    <Button
+                        href={`/tags/${tag.toLowerCase()}`}
+                        classAppend={'max-h-10'}>
+                        #{tag}
+                    </Button>
+                ))
+            }
+        </div>
         <div class='grid grid-cols-12 gap-12'>
             {allProjectsWithTag.map((project) => <Project project={project} />)}
         </div>
