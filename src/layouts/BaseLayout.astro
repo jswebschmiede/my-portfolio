@@ -14,6 +14,7 @@ import '@fontsource/catamaran/800.css';
 import '@fontsource/catamaran/900.css';
 import '@/styles/scrollfx.css';
 import BasicScripts from '@/components/BasicScripts.astro';
+import ProgressToTopButton from '@/components/ui/ProgressToTopButton.astro';
 
 export interface Props {
     meta?: MetaSEO;
@@ -64,6 +65,8 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
                 content-visibility: auto;
             }
         </style>
+
+        <ProgressToTopButton />
 
         <BasicScripts />
     </body>

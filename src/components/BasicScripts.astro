@@ -12,6 +12,7 @@ import { SITE } from '@/config';
     import SwupHeadPlugin from '@swup/head-plugin';
     import SwupOverlayTheme from '@swup/overlay-theme';
     import { followCursor } from '../lib/mouse-cursor';
+    import { totopButton } from '../lib/totop-button';
     import '../lib/scrollfx';
 
     const swup = new Swup({
@@ -40,15 +41,9 @@ import { SITE } from '@/config';
         // init mouse cursor
         followCursor();
 
-        var scrollFx = document.getElementsByClassName('js-scroll-fx');
-        for (var i = 0; i < scrollFx.length; i++) {
-            (function (i) {
-                var scrollableElement = scrollFx[i].getAttribute(
-                    'data-scrollable-element'
-                );
-                new ScrollFx(scrollFx[i], scrollableElement);
-            })(i);
-        }
+        // init totop button
+        const progressWrap = document.querySelector('.progress-wrap');
+        new totopButton(progressWrap);
 
         // init scroll reveal
         ScrollReveal().reveal('.reveal-fx', {
@@ -86,7 +81,7 @@ import { SITE } from '@/config';
             });
         }
         // unload scroll reveal
-        ScrollReveal().clean('.reveal-fx');
+        ScrollReveal().destroy();
     };
 
     // run once when page loads
