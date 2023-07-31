@@ -14,6 +14,7 @@ import { SITE } from '@/config';
     import SwupScrollPlugin from '@swup/scroll-plugin';
     import { followCursor } from '../lib/mouse-cursor';
     import { totopButton } from '../lib/totop-button';
+    import { CountUp } from '../lib/countUp';
 
     const swup = new Swup({
         plugins: [
@@ -48,6 +49,19 @@ import { SITE } from '@/config';
         // init totop button
         const progressWrap = document.querySelector('.progress-wrap');
         new totopButton(progressWrap);
+
+        // init count up
+        const countUp = document.getElementsByClassName('countup__number');
+        if (countUp.length > 0) {
+            for (var i = 0; i < countUp.length; i++) {
+                (function (i) {
+                    new CountUp(countUp[i], {
+                        separator: true,
+                        duration: 2000
+                    });
+                })(i);
+            }
+        }
 
         // init scroll reveal
         ScrollReveal().reveal('.reveal-fx', {
