@@ -1,8 +1,7 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import prefetch from '@astrojs/prefetch';
-import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 
 const sites = [
@@ -12,14 +11,9 @@ const sites = [
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [
-        sitemap(),
-        tailwind(),
-        prefetch(),
-        image({
-            serviceEntryPoint: '@astrojs/image/sharp'
-        }),
-        mdx()
-    ],
+    image: {
+        service: sharpImageService()
+    },
+    integrations: [sitemap(), tailwind(), prefetch(), mdx()],
     site: sites[1]
 });

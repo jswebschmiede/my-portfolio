@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import rectangle from '@/assets/rectangle.svg';
 import NavBar from './NavBar.astro';
 ---
@@ -9,9 +9,8 @@ import NavBar from './NavBar.astro';
     class='main-header z-1 relative z-10 flex w-full items-center justify-between pt-14'>
     <div
         class='container relative hidden w-full max-w-6xl items-center justify-between lg:flex'>
-        <Image
+        <Image src={rectangle}
             class='absolute -top-14 left-80 -z-[1]'
-            src={rectangle}
             alt=''
             aria-hidden='true'
         />
