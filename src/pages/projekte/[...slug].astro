@@ -31,10 +31,10 @@ const meta = {
 <Layout {meta}>
     <div class='container max-w-7xl py-32'>
         <Image
-            src={project.data.image.src}
+            src={project.data.image as ImageMetadata}
             width={1600}
-            height={675}
-            alt={project.data.image.alt}
+            height={1600 / 1.5}
+            alt={project.data.image_alt}
             class='border-2 reveal-fx'
             format='webp'
         />

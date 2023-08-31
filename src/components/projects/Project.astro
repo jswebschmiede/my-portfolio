@@ -12,11 +12,11 @@ const { project } = Astro.props;
 
 <article class='col-span-6 reveal-fx'>
     <div class='border-2 bg-whitegreen-100 p-10 shadow-custom tilt'>
-        <Image
-            src={project.data.image.src}
+        <Image            
+            src={project.data.image as ImageMetadata}
             width={496}
-            height={306}
-            alt={project.data.image.alt}
+            height={496 / 1.5}
+            alt={project.data.image_alt}
             class='mb-10 border-2'
             format='webp'
         />
