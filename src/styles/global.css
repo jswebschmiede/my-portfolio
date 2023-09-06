@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-black;
+  }
+
+  h1,
+  h2 {
+    @apply text-7xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  /* Improve Page speed */
+  /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+  img {
+    content-visibility: auto;
+  }
+}
+
+@layer components {
+  html.sr .load-hidden,
+  .reveal-fx {
+    @apply invisible;
+  }
+
+  button[aria-controls="mobile-menu"] span:nth-child(2) {
+    @apply bg-black-500 block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out -translate-y-0.5;
+  }
+  button[aria-controls="mobile-menu"] span:nth-child(3) {
+    @apply bg-black-500 block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out opacity-100 my-0.5;
+  }
+  button[aria-controls="mobile-menu"] span:nth-child(4) {
+    @apply bg-black-500 block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out translate-y-0.5;
+  }
+
+  button[aria-controls="mobile-menu"][aria-expanded="true"] span:nth-child(2) {
+    @apply rotate-45 translate-y-1;
+  }
+  button[aria-controls="mobile-menu"][aria-expanded="true"] span:nth-child(3) {
+    @apply opacity-0;
+  }
+  button[aria-controls="mobile-menu"][aria-expanded="true"] span:nth-child(4) {
+    @apply -rotate-45 -translate-y-1;
+  }
+}

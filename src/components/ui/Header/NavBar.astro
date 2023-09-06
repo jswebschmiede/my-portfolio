@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import { SITE } from "@/config";
+import Button from "@/components/ui/Button.astro";
+import moonFilled from "@/assets/moon-filled-transition.svg";
+import sunnyFilled from "@/assets/sunny-filled-loop-transition.svg";
+import { twMerge } from "tailwind-merge";
+
+const navItems = SITE.links;
+---
+
+<nav id="main-nav">
+  <ul
+    class="items-center justify-center space-x-10 font-bold uppercase hidden md:flex"
+  >
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="group relative lg:text-light lg:dark:text-dark"
+            rel="prefetch"
+          >
+            <span
+              class={`absolute -bottom-1 left-0 inline-block duration-300 h-[3px] transition-[width] group-hover:w-5`}
+            >
+              &nbsp;
+            </span>
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <button
+    type="button"
+    class="flex-col items-center justify-center flex md:hidden"
+    aria-controls="mobile-menu"
+    aria-expanded="false"
+  >
+    <span class="sr-only">Open main menu</span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<nav class="flex flex-wrap items-center justify-center gap-5">
+  <Button classAppend="max-h-10 hidden md:flex" href="/kontakt">Kontakt</Button>
+  <button
+    class="hidden md:flex items-center justify-center rounded-full bg-black-500 p-2 text-whitegreen-100"
+    aria-label="Theme Switcher"
+    title="Switch between light and dark theme"
+    data-toggle-color-scheme
+  >
+    <Image id="moon" src={moonFilled as any} alt="" aria-hidden="true" />
+    <Image id="sunny" src={sunnyFilled as any} alt="" aria-hidden="true" />
+  </button>
+</nav>
+
+<div class="absolute md:-top-4 left-[50%] translate-x-[-50%]">
+  <a
+    href="/"
+    class="font-heading flex h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-black-500 bg-orange-500 pl-1 pt-[0.31rem] text-[34px] font-black shadow-custom transition-shadow duration-200 hover:shadow-none"
+  >
+    JS
+  </a>
+</div>

@@ -1,46 +1,50 @@
 ---
-import { Image } from 'astro:assets';
-import Header from '@/components/ui/Header.astro';
-import Footer from '@/components/ui/Footer.astro';
-import Layout from '@/layouts/BaseLayout.astro';
+import { Image } from "astro:assets";
+import Header from "@/components/ui/Header/Header.astro";
+import Footer from "@/components/ui/Footer.astro";
+import Layout from "@/layouts/BaseLayout.astro";
 
-import star from '@/assets/star.svg';
-import ellip from '@/assets/ellip.svg';
+import star from "@/assets/star.svg";
+import ellip from "@/assets/ellip.svg";
 
 const { meta } = Astro.props;
 ---
 
 <Layout {meta}>
-    <div class='site relative'>        <Image            class='absolute right-0 top-1/3 scroll-fx js-scroll-fx -z-[1]'
-            src={star}
-            data-scroll-fx='translateY, 100px, -100px, 0%, 100%'
-            alt=''
-            aria-hidden='true'
-        />
-        <Image
-            class='absolute bottom-1/4 left-0 scroll-fx js-scroll-fx -z-[1]'
-            src={ellip}
-            data-scroll-fx='translateY, 100px, -200px, 0%, 100%'
-            alt=''
-            aria-hidden='true'
-        />
+  <div class="site relative">
+    <Image
+      class="absolute right-0 top-1/3 scroll-fx js-scroll-fx -z-[1] reveal-fx"
+      src={star as any}
+      data-scroll-fx="translateY, 100px, -100px, 0%, 100%"
+      alt=""
+      aria-hidden="true"
+    />
+    <Image
+      class="absolute bottom-1/4 left-0 scroll-fx js-scroll-fx -z-[1] reveal-fx"
+      src={ellip as any}
+      data-scroll-fx="translateY, 100px, -200px, 0%, 100%"
+      alt=""
+      aria-hidden="true"
+    />
 
-        <slot name='header'>
-            <Header />
-        </slot>
+    <slot name="header">
+      <Header />
+    </slot>
 
-        <main
-            class='site-content'
-            id='swup'>
-            <slot />
-        </main>
+    <main class="site-content" id="swup">
+      <slot />
+    </main>
 
-        <slot name='footer'>
-            <Footer />
-        </slot>  <div
-            class='mouse-cursor cursor-outer fixed top-0 left-0 pointer-events-none rounded-full invisible translate-z-0 -ml-[15px] -mt-[15px] w-[30px] h-[30px] border-2 border-orange-500 opacity-50 transition-all duration-700 z-50 ease-out'>
-        </div>        <div
-            class='mouse-cursor cursor-inner fixed top-0 left-0 pointer-events-none rounded-full invisible translate-z-0 -ml-[3px] -mt-[3px] w-[6px] h-[6px] transition-mouse duration-300 ease-in-out bg-orange-500'>
-        </div>
+    <slot name="footer">
+      <Footer />
+    </slot>
+    <div
+      class="mouse-cursor cursor-outer fixed top-0 left-0 pointer-events-none rounded-full invisible translate-z-0 -ml-[15px] -mt-[15px] w-[30px] h-[30px] border-2 border-orange-500 opacity-50 transition-all duration-700 z-50 ease-out"
+    >
     </div>
+    <div
+      class="mouse-cursor cursor-inner fixed top-0 left-0 pointer-events-none rounded-full invisible translate-z-0 -ml-[3px] -mt-[3px] w-[6px] h-[6px] transition-mouse duration-300 ease-in-out bg-orange-500"
+    >
+    </div>
+  </div>
 </Layout>

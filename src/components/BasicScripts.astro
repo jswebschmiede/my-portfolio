@@ -1,185 +1,182 @@
 ---
-import { SITE } from '@/config';
+import { SITE } from "@/config";
 ---
 
 <script>
-    //@ts-nocheck
-    import VanillaTilt from 'vanilla-tilt';
-    import ScrollReveal from 'scrollreveal';
-    import Swup from 'swup';
-    import SwupA11yPlugin from '@swup/a11y-plugin';
-    import SwupBodyClassPlugin from '@swup/body-class-plugin';
-    import SwupHeadPlugin from '@swup/head-plugin';
-    import SwupOverlayTheme from '@swup/overlay-theme';
-    import SwupScrollPlugin from '@swup/scroll-plugin';
-    import { followCursor } from '../lib/mouse-cursor';
-    import { totopButton } from '../lib/totop-button';
-    import { CountUp } from '../lib/countUp';
+  //@ts-nocheck
+  import VanillaTilt from "vanilla-tilt";
+  import ScrollReveal from "scrollreveal";
+  import Swup from "swup";
+  import SwupA11yPlugin from "@swup/a11y-plugin";
+  import SwupBodyClassPlugin from "@swup/body-class-plugin";
+  import SwupHeadPlugin from "@swup/head-plugin";
+  import SwupOverlayTheme from "@swup/overlay-theme";
+  import SwupScrollPlugin from "@swup/scroll-plugin";
+  import { followCursor } from "../scripts/components/mouse-cursor";
+  import { totopButton } from "../scripts/components/totop-button";
+  import { CountUp } from "../scripts/components/countUp";
+  import { AnimatedBtn } from "../scripts/components/animatedBtn";
 
-    const swup = new Swup({
-        plugins: [
-            new SwupBodyClassPlugin(),
-            new SwupA11yPlugin(),
-            new SwupHeadPlugin(),
-            new SwupOverlayTheme({
-                color: '#FC7942',
-                duration: 800,
-                direction: 'to-right'
-            }),
-            new SwupScrollPlugin({
-                doScrollingRightAway: false,
-                animateScroll: false
-            })
-        ]
-    });
+  const swup = new Swup({
+    plugins: [
+      new SwupBodyClassPlugin(),
+      new SwupA11yPlugin(),
+      new SwupHeadPlugin(),
+      new SwupOverlayTheme({
+        color: "#FC7942",
+        duration: 800,
+        direction: "to-right",
+      }),
+      new SwupScrollPlugin({
+        doScrollingRightAway: false,
+        animateScroll: false,
+      }),
+    ],
+  });
 
-    const init = () => {
-        // init tilt
-        if (document.querySelector('.tilt')) {
-            VanillaTilt.init(Array.from(document.querySelectorAll('.tilt')), {
-                max: 1.25,
-                speed: 400,
-                perspective: 1000
-            });
-        }
-
-        // init mouse cursor
-        followCursor();
-
-        // init totop button
-        const progressWrap = document.querySelector('.progress-wrap');
-        new totopButton(progressWrap);
-
-        // init count up
-        const countUp = document.getElementsByClassName('countup__number');
-        if (countUp.length > 0) {
-            for (var i = 0; i < countUp.length; i++) {
-                (function (i) {
-                    new CountUp(countUp[i], {
-                        separator: true,
-                        duration: 2000
-                    });
-                })(i);
-            }
-        }
-
-        // init scroll reveal
-        ScrollReveal().reveal('.reveal-fx', {
-            delay: 500,
-            duration: 400,
-            easing: 'ease-in-out',
-            distance: '50px'
-        });
-
-        const mainNav = document.getElementById('main-nav');
-        const navLinks = Array.from(mainNav.querySelectorAll('a'));
-
-        // set aria-current and active nav link
-        navLinks.forEach((link) => {
-            const href = link.getAttribute('href');
-            const path = window.location.pathname;
-            const span = link.children[0];
-
-            if (href === path) {
-                link.setAttribute('aria-current', 'page');
-                span.classList.add('w-5', 'bg-black-800');
-            } else {
-                link.removeAttribute('aria-current');
-                span.classList.remove('w-5', 'bg-black-800');
-                span.classList.add('w-0', 'bg-black-200');
-            }
-        });
-    };
-
-    const unload = () => {
-        // unload tilt
-        if (document.querySelector('.tilt')) {
-            document.querySelectorAll('.tilt').forEach((el) => {
-                el.vanillaTilt.reset();
-            });
-        }
-        // unload scroll reveal
-        ScrollReveal().destroy();
-    };
-
-    // run once when page loads
-    if (document.readyState === 'complete') {
-        init();
-    } else {
-        document.addEventListener('DOMContentLoaded', () => init());
+  const init = () => {
+    // init tilt
+    if (document.querySelector(".tilt")) {
+      VanillaTilt.init(Array.from(document.querySelectorAll(".tilt")), {
+        max: 1.25,
+        speed: 400,
+        perspective: 1000,
+      });
     }
 
-    // run after every additional navigation by swup
-    swup.on('contentReplaced', init);
+    // init mouse cursor
+    followCursor();
 
-    // cleanup all the instances, listeners and mess we have made when page was loaded
-    swup.on('willReplaceContent', unload);
+    // init totop button
+    const progressWrap = document.querySelector(".progress-wrap");
+    new totopButton(progressWrap);
+
+    // query animated btn by aria-controls attribute
+    const animatedBtn = document.querySelector('[aria-controls="mobile-menu"]');
+    new AnimatedBtn(animatedBtn);
+
+    // init count up
+    const countUp = document.getElementsByClassName("countup__number");
+    if (countUp.length > 0) {
+      for (var i = 0; i < countUp.length; i++) {
+        (function (i) {
+          new CountUp(countUp[i], {
+            separator: true,
+            duration: 2000,
+          });
+        })(i);
+      }
+    }
+
+    // init scroll reveal
+    ScrollReveal().reveal(".reveal-fx", {
+      delay: 500,
+      duration: 400,
+      easing: "ease-in-out",
+      distance: "50px",
+    });
+
+    const mainNav = document.getElementById("main-nav");
+    const navLinks = Array.from(mainNav.querySelectorAll("a"));
+
+    // set aria-current and active nav link
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      const path = window.location.pathname;
+      const span = link.children[0];
+
+      if (href === path) {
+        link.setAttribute("aria-current", "page");
+        span.classList.add("w-5", "bg-black-800");
+      } else {
+        link.removeAttribute("aria-current");
+        span.classList.remove("w-5", "bg-black-800");
+        span.classList.add("w-0", "bg-black-200");
+      }
+    });
+  };
+
+  const unload = () => {
+    // unload tilt
+    if (document.querySelector(".tilt")) {
+      document.querySelectorAll(".tilt").forEach((el) => {
+        el.vanillaTilt.reset();
+      });
+    }
+    // unload scroll reveal
+    ScrollReveal().destroy();
+  };
+
+  // run once when page loads
+  if (document.readyState === "complete") {
+    init();
+  } else {
+    document.addEventListener("DOMContentLoaded", () => init());
+  }
+
+  // run after every additional navigation by swup
+  swup.on("contentReplaced", init);
+
+  // cleanup all the instances, listeners and mess we have made when page was loaded
+  swup.on("willReplaceContent", unload);
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
-    // Add class to html tag if JavaScript is enabled
-    document.documentElement.classList.add('js');
+  // Add class to html tag if JavaScript is enabled
+  document.documentElement.classList.add("js");
 
-    // Toggle dark mode icon
-    function toggleDarkmodeIcon() {
-        const moon = document.getElementById('moon');
-        const sunny = document.getElementById('sunny');
-        const isDarkMode = document.documentElement.classList.contains('dark');
+  // Toggle dark mode icon
+  function toggleDarkmodeIcon() {
+    const moon = document.getElementById("moon");
+    const sunny = document.getElementById("sunny");
+    const isDarkMode = document.documentElement.classList.contains("dark");
 
-        sunny.classList.toggle('hidden', isDarkMode);
-        moon.classList.toggle('hidden', !isDarkMode);
+    sunny.classList.toggle("hidden", isDarkMode);
+    moon.classList.toggle("hidden", !isDarkMode);
+  }
+
+  // Add class to html tag if dark theme is enabled
+  function applyTheme(theme) {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    toggleDarkmodeIcon();
+  }
+
+  // Attach event to element
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === "string" ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
     }
+  }
 
-    // Add class to html tag if dark theme is enabled
-    function applyTheme(theme) {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        toggleDarkmodeIcon();
-    }
+  // Apply theme
+  if (
+    (defaultTheme && defaultTheme.endsWith(":only")) ||
+    (!localStorage.theme && defaultTheme !== "system")
+  ) {
+    applyTheme(defaultTheme.replace(":only", ""));
+  } else if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
 
-    // Attach event to element
-    function attachEvent(selector, event, fn) {
-        const matches =
-            typeof selector === 'string'
-                ? document.querySelectorAll(selector)
-                : selector;
-        if (matches && matches.length) {
-            matches.forEach((elem) => {
-                elem.addEventListener(event, (e) => fn(e, elem), false);
-            });
-        }
-    }
+  // on load
+  window.onload = function () {
+    // Toggle dark mode
+    attachEvent("[data-toggle-color-scheme]", "click", function () {
+      if (defaultTheme.endsWith(":only")) {
+        return;
+      }
 
-    // Apply theme
-    if (
-        (defaultTheme && defaultTheme.endsWith(':only')) ||
-        (!localStorage.theme && defaultTheme !== 'system')
-    ) {
-        applyTheme(defaultTheme.replace(':only', ''));
-    } else if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-        applyTheme('dark');
-    } else {
-        applyTheme('light');
-    }
-
-    // on load
-    window.onload = function () {
-        // Toggle dark mode
-        attachEvent('[data-toggle-color-scheme]', 'click', function () {
-            if (defaultTheme.endsWith(':only')) {
-                return;
-            }
-
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains(
-                'dark'
-            )
-                ? 'dark'
-                : 'light';
-            toggleDarkmodeIcon();
-        });
-    };
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      toggleDarkmodeIcon();
+    });
+  };
 </script>

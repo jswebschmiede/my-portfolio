@@ -1,21 +1,20 @@
 ---
 interface Props {
-    count: number;
-    label: string;
+  count: number;
+  label: string;
 }
 
 const { count, label } = Astro.props;
 ---
 
-<p class='countup group relative py-4'>
-    <span
-        class='countup__number relative z-10 block text-right font-heading text-5xl font-bold'>
-        {count}
-    </span>
-    <span class='countup__label relative z-10 block text-right font-bold'>
-        {label}
-    </span>
-    <span
-        class='absolute bottom-0 right-0 z-0 h-3 w-0 bg-orange-500 duration-300 transition-[width] group-hover:w-full'
-    ></span>
+<p class="countup group relative py-4">
+  <span class="countup__number relative z-10 block text-right font-heading text-5xl font-bold">
+    {count}
+  </span>
+  <span class="countup__label relative z-10 block text-right font-bold">
+    {label}
+  </span>
+  <span
+    class="absolute bottom-0 right-0 z-0 h-3 w-0 bg-orange-500 duration-300 transition-[width] group-hover:w-full"
+  ></span>
 </p>

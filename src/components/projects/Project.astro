@@ -1,37 +1,33 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import Button from '../ui/Button.astro';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Button from "../ui/Button.astro";
 
 interface Props {
-    project: CollectionEntry<'projects'>;
+  project: CollectionEntry<"projects">;
 }
 
 const { project } = Astro.props;
 ---
 
-<article class='col-span-6 reveal-fx'>
-    <div class='border-2 bg-whitegreen-100 p-10 shadow-custom tilt'>
-        <Image            
-            src={project.data.image as ImageMetadata}
-            width={496}
-            height={496 / 1.5}
-            alt={project.data.image_alt}
-            class='mb-10 border-2'
-            format='webp'
-        />
-        <p class='mb-1 text-sm font-bold text-orange-500'>
-            <span class='mr-2'>
-                {project.data.tags.join(', ')}
-            </span>
-        </p>
-        <h3 class='mt-0 mb-5 text-5xl font-black'>
-            {project.data.title}
-        </h3>
-        <Button
-            href={`/projekte/${project.slug}`}
-            variant='secondary'>
-            Projekt anzeigen
-        </Button>
-    </div>
+<article class="col-span-6 reveal-fx">
+  <div class="border-2 bg-whitegreen-100 p-10 shadow-custom tilt">
+    <Image
+      src={project.data.image as ImageMetadata}
+      width={496}
+      height={496 / 1.5}
+      alt={project.data.image_alt}
+      class="mb-10 border-2"
+      format="webp"
+    />
+    <p class="mb-1 text-sm font-bold text-orange-500">
+      <span class="mr-2">
+        {project.data.tags.join(", ")}
+      </span>
+    </p>
+    <h3 class="mt-0 mb-5 text-5xl font-black">
+      {project.data.title}
+    </h3>
+    <Button href={`/projekte/${project.slug}`} variant="secondary">Projekt anzeigen</Button>
+  </div>
 </article>

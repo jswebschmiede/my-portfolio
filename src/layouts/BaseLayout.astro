@@ -1,70 +1,43 @@
 ---
-import MetaTags from '@/components/MetaTags.astro';
-import { SITE } from '@/config';
-import type { MetaSEO } from '@/types';
-import '@fontsource/poppins/300.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/600.css';
-import '@fontsource/poppins/700.css';
-import '@fontsource/poppins/800.css';
-import '@fontsource/poppins/900.css';
-import '@fontsource/catamaran/600.css';
-import '@fontsource/catamaran/700.css';
-import '@fontsource/catamaran/800.css';
-import '@fontsource/catamaran/900.css';
-import BasicScripts from '@/components/BasicScripts.astro';
-import ProgressToTopButton from '@/components/ui/ProgressToTopButton.astro';
+import MetaTags from "@/components/MetaTags.astro";
+import { SITE } from "@/config";
+import type { MetaSEO } from "@/types";
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
+import "@fontsource/poppins/900.css";
+import "@fontsource/catamaran/600.css";
+import "@fontsource/catamaran/700.css";
+import "@fontsource/catamaran/800.css";
+import "@fontsource/catamaran/900.css";
+import "@/styles/global.css";
+import BasicScripts from "@/components/BasicScripts.astro";
+import ProgressToTopButton from "@/components/ui/ProgressToTopButton.astro";
 
 export interface Props {
-    meta?: MetaSEO;
+  meta?: MetaSEO;
 }
 
 const { meta = {} } = Astro.props;
-const { language = 'en', textDirection = 'ltr' } = SITE;
+const { language = "en", textDirection = "ltr" } = SITE;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html
-    lang={language}
-    dir={textDirection}
-    class='scrollbar-rounded-lg scroll-smooth scrollbar-thin scrollbar-track-black-500 scrollbar-thumb-orange-500 scrollbar-thumb-rounded overflow-x-hidden'>
-    <head>
-        <MetaTags {...meta} />
-    </head>
-    <body class='h-full min-h-screen w-full bg-whitegreen-500 font-sans text-black-500 antialiased'>        <slot />
-        <style is:global>
-            html.sr .load-hidden,
-            .reveal-fx {
-                @apply invisible;
-            }
+  lang={language}
+  dir={textDirection}
+  class="scrollbar-rounded-lg scroll-smooth scrollbar-thin scrollbar-track-black-500 scrollbar-thumb-orange-500 scrollbar-thumb-rounded overflow-x-hidden"
+>
+  <head>
+    <MetaTags {...meta} />
+  </head>
+  <body class="h-full min-h-screen w-full bg-whitegreen-500 font-sans text-black-500 antialiased">
+    <slot />
 
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                @apply font-heading font-black;
-            }
+    <ProgressToTopButton />
 
-            h1,
-            h2 {
-                @apply text-7xl;
-            }
-
-            h4 {
-                @apply text-2xl;
-            }
-
-            /* Improve Page speed */
-            /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-            img {
-                content-visibility: auto;
-            }
-        </style>
-
-        <ProgressToTopButton />
-
-        <BasicScripts />
-    </body>
-</html>
+    <BasicScripts />
+  </body></html
+>
