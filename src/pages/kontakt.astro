@@ -1,40 +1,36 @@
 ---
-import { Icon } from 'astro-icon';
-import Layout from '@/layouts/PageLayout.astro';
-import ContactItem from '@/components/ui/ContactItem.astro';
+import { Icon } from "astro-icon";
+import Layout from "@/layouts/PageLayout.astro";
+import ContactItem from "@/components/ui/ContactItem.astro";
+import Container from "@/components/ui/Container.astro";
 
 const meta = {
-    title: 'Kontakt',
-    description: 'Home page description'
+  title: "Kontakt",
+  description: "Home page description",
 };
 ---
 
 <Layout {meta}>
-    <div class='container grid max-w-6xl items-center gap-12 py-32'>
-        <h1 class='mb-16 text-center'>Kontakt</h1>
+  <article class="reveal-fx">
+    <Container>
+      <h1 class="col-span-12 text-center">Kontakt</h1>
+      <div class="col-span-6 col-start-4 max-w-3xl">
+        <ul>
+          <ContactItem
+            icon="mdi:map-outline"
+            title="Adresse"
+            text="Heinrich-Heine-Straße 34, 04600 Altenburg"
+          />
+          <ContactItem
+            icon="mdi:email-outline"
+            title="E-Mail"
+            isMail={true}
+            text="info@joerg-schoeneburg.de"
+          />
 
-        <div class='grid grid-cols-12 gap-12'>
-            <div class='col-span-6'>
-                <ul>
-                    <ContactItem
-                        icon='mdi:map-outline'
-                        title='Adresse'
-                        text='Heinrich-Heine-Straße 34, 04600 Altenburg'
-                    />
-                    <ContactItem
-                        icon='mdi:email-outline'
-                        title='E-Mail'
-                        isMail={true}
-                        text='info@joerg-schoeneburg.de'
-                    />
-
-                    <ContactItem
-                        icon='mdi:phone-outline'
-                        title='Telefon'
-                        text='03447-487890'
-                    />
-                </ul>
-            </div>
-        </div>
-    </div>
+          <ContactItem icon="mdi:phone-outline" title="Telefon" text="03447-487890" />
+        </ul>
+      </div>
+    </Container>
+  </article>
 </Layout>

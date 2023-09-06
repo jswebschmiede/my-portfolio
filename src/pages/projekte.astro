@@ -1,31 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '@/layouts/PageLayout.astro';
-import ProjectFeatured from '@/components/projects/ProjectFeatured.astro';
-import Project from '@/components/projects/Project.astro';
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/PageLayout.astro";
+import ProjectFeatured from "@/components/projects/ProjectFeatured.astro";
+import Project from "@/components/projects/Project.astro";
+import Container from "@/components/ui/Container.astro";
 
 const meta = {
-    title: 'Projekte',
-    description: 'Home page description'
+  title: "Projekte",
+  description: "Home page description",
 };
 
-const allProjects = await getCollection('projects');
+const allProjects = await getCollection("projects");
 ---
 
 <Layout {meta}>
-    <div class='container grid max-w-6xl items-center gap-12 py-32'>
-        <h1 class='mb-16 text-center'>Projekte</h1>
-
-        <div class='grid grid-cols-12 gap-12'>
-            {
-                allProjects.map((project) =>
-                    project.data.isFeatured ? (
-                        <ProjectFeatured project={project} />
-                    ) : (
-                        <Project project={project} />
-                    )
-                )
-            }
-        </div>
-    </div>
+  <Container>
+    <h1 class="mb-16 text-center col-span-12">Projekte</h1>
+    {
+      allProjects.map((project) =>
+        project.data.isFeatured ? (
+          <ProjectFeatured project={project} />
+        ) : (
+          <Project project={project} />
+        ),
+      )
+    }
+  </Container>
 </Layout>

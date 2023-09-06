@@ -1,162 +1,113 @@
 ---
-import { Image } from 'astro:assets';
-import { SITE } from '@/config';
-import Layout from '@/layouts/PageLayout.astro';
+import { Image } from "astro:assets";
+import { SITE } from "@/config";
+import Layout from "@/layouts/PageLayout.astro";
 
-import Skill from '@/components/ui/Skill.astro';
-import CountItem from '@/components/ui/CountItem.astro';
-import ResumeItem from '@/components/ui/ResumeItem.astro';
+import Skill from "@/components/ui/Skill.astro";
+import CountItem from "@/components/ui/CountItem.astro";
+import ResumeItem from "@/components/ui/ResumeItem.astro";
 
-import handcoding from '@/assets/hand-coding-bro.svg';
+import handcoding from "@/assets/hand-coding-bro.svg";
+import Container from "@/components/ui/Container.astro";
 
 const meta = {
-    title: 'Über mich',
-    description: 'Home page description'
+  title: "Über mich",
+  description: "Home page description",
 };
 
 const { skills } = SITE;
 ---
 
 <Layout {meta}>
-    <article class='reveal-fx'>
-        <div
-            class='container grid max-w-6xl items-center gap-12 py-32 lg:grid-cols-12'>
-            <div class='lg:col-span-4'>
-                <div class='prose'>
-                    <h1 class='text-7xl'>Über mich</h1>
-                    <p>
-                        Hallo ich bin Jörg, ich bin ein leidenschaftlicher
-                        Webentwickler mit mehr als 8 Jahren Erfahrung in der
-                        Erstellung von ansprechenden und funktionalen
-                        Webanwendungen.
-                    </p>
-                    <p>
-                        Mein Ziel ist es, maßgeschneiderte Lösungen zu
-                        entwickeln, die den Anforderungen meiner Kunden
-                        entsprechen und gleichzeitig ein reibungsloses
-                        Benutzererlebnis bieten.
-                    </p>
-                </div>
-            </div>
-            <div class='lg:col-span-6'>
-                <Image
-                    class='tilt w-full'
-                    src={handcoding}
-                    alt='Hand Coding'
-                />
-            </div>
-            <div class='space-y-24 lg:col-span-2'>
-                <CountItem
-                    count={40}
-                    label='Zufriedene Kunden'
-                />
-                <CountItem
-                    count={90}
-                    label='Projekte abgeschlossen'
-                />
-                <CountItem
-                    count={8}
-                    label='Jahre Erfahrung'
-                />
-            </div>
+  <article class="reveal-fx">
+    <Container>
+      <div class="col-span-4">
+        <div class="prose text-center md:text-left">
+          <h1 class="text-5xl md:text-7xl">Über mich</h1>
+          <p>
+            Hallo ich bin Jörg, ich bin ein leidenschaftlicher Webentwickler mit mehr als 8 Jahren
+            Erfahrung in der Erstellung von ansprechenden und funktionalen Webanwendungen.
+          </p>
+          <p>
+            Mein Ziel ist es, maßgeschneiderte Lösungen zu entwickeln, die den Anforderungen meiner
+            Kunden entsprechen und gleichzeitig ein reibungsloses Benutzererlebnis bieten.
+          </p>
         </div>
-    </article>
+      </div>
+      <div class="col-span-6">
+        <Image class="tilt w-full" src={handcoding as any} alt="Hand Coding" />
+      </div>
+      <div class="space-y-8 md:space-y-24 col-span-2 flex flex-col items-center text-center">
+        <CountItem count={40} label="Zufriedene Kunden" />
+        <CountItem count={90} label="Projekte abgeschlossen" />
+        <CountItem count={8} label="Jahre Erfahrung" />
+      </div>
+    </Container>
+  </article>
 
-    <article class='reveal-fx'>
+  <article class="reveal-fx">
+    <div id="skills" class="container max-w-7xl pb-32 pt-16">
+      <h2 class="mb-12 text-center text-5xl md:text-7xl font-black">Meine Skills</h2>
+      <div
+        class="relative flex w-full items-center justify-center bg-circularLight h-[50vh] rounded-[50%] sm:h-[60vh] md:h-[80vh] md:bg-circularLightMd lg:h-screen lg:bg-circularLightLg"
+      >
         <div
-            id='skills'
-            class='container grid max-w-7xl pb-32 pt-16'>
-            <h2 class='mb-12 text-center text-7xl font-black'>Meine Skills</h2>
-            <div
-                class='relative flex w-full items-center justify-center bg-circularLight h-[50vh] rounded-[50%] sm:h-[60vh] md:h-[80vh] md:bg-circularLightMd lg:h-screen lg:bg-circularLightLg'>
-                <div
-                    class='absolute flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-black-500 shadow-custom md:h-20 md:w-20 md:text-base'>
-                    Web
-                </div>
-                {
-                    skills.map((skill) => (
-                        <Skill
-                            x={skill.x}
-                            y={skill.y}>
-                            {skill.name}
-                        </Skill>
-                    ))
-                }
-            </div>
+          class="absolute flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-black-500 shadow-custom md:h-20 md:w-20 md:text-base"
+        >
+          Web
         </div>
-    </article>
+        {
+          skills.map((skill) => (
+            <Skill x={skill.x} y={skill.y}>
+              {skill.name}
+            </Skill>
+          ))
+        }
+      </div>
+    </div>
+  </article>
 
-    <article class='reveal-fx'>
-        <h2 class='text-center'>Lebenlauf</h2>
-        <div class='container grid max-w-3xl gap-24 py-28 lg:grid-cols-12'>
-            <div class='lg:col-span-12'>
-                <h3 class='text-4xl pb-14'>Beruflicher Werdegang</h3>
-                <ul
-                    class='relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800'>
-                    <ResumeItem
-                        title='Webentwickler'
-                        company='Freelancer'
-                        date='09/2012 - heute'>
-                        <p class='font-bold'>Aufgabenschwerpunkte:</p>
-                        <p>
-                            Webprogrammierung mit PHP und Javascript, CMS System
-                            und deren Templating
-                        </p>
-                    </ResumeItem>
-                    <ResumeItem
-                        title='Frontend Entwickler'
-                        company='St. Sportservice'
-                        date='09/2009 - 04/2012'>
-                        <p class='font-bold'>Aufgabenschwerpunkte:</p>
-                        <p>
-                            Umsetzen von Webseiten und Web Applikationen mit
-                            HTML, CSS und Javascript.
-                        </p>
-                    </ResumeItem>
-                </ul>
-            </div>
-            <div class='lg:col-span-12'>
-                <h3 class='text-4xl pb-14'>Aus -und Weiterbildung</h3>
-                <ul
-                    class='relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800'>
-                    <ResumeItem
-                        title='E-Learning'
-                        company='udemy'
-                        date='09/2012 - heute'>
-                        <p>
-                            Studium verschiedener Kurse im Bereich
-                            Webentwicklung, darunter:
-                        </p>
-                        <ul class='list-disc pl-8'>
-                            <li>
-                                Understanding TypeScript (Maximilian
-                                Schwarzmüller)
-                            </li>
-                            <li>
-                                JavaScript - The Complete Guide 2023 (Beginner +
-                                Advanced) (Maximilian Schwarzmüller)
-                            </li>
-                            <li>
-                                React - The Complete Guide (incl Hooks, React
-                                Router, Redux) (Maximilian Schwarzmüller)
-                            </li>
-                            <li>
-                                Next.js & React - The Complete Guide (incl. Two
-                                Paths!) (Maximilian Schwarzmüller)
-                            </li>
-                        </ul>
-                    </ResumeItem>
-                    <ResumeItem
-                        title='Fortbildung'
-                        company='Robotron'
-                        date='09/2009 - 04/2010'>
-                        <p>
-                            Fortbildungslehrgang zum Webdesigner, im Robotron
-                            Bildungszentrum in Halle
-                        </p>
-                    </ResumeItem>
-                </ul>
-            </div>
-        </div>
-    </article>
+  <article class="reveal-fx">
+    <h2 class="text-center text-5xl md:text-7xl">Lebenlauf</h2>
+    <div class="container max-w-3xl gap-24 py-28">
+      <h3 class="text-4xl pb-14">Beruflicher Werdegang</h3>
+      <ul
+        class="relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800"
+      >
+        <ResumeItem title="Webentwickler" company="Freelancer" date="09/2012 - heute">
+          <p class="font-bold">Aufgabenschwerpunkte:</p>
+          <p> Webprogrammierung mit PHP und Javascript, CMS System und deren Templating</p>
+        </ResumeItem>
+        <ResumeItem title="Frontend Entwickler" company="St. Sportservice" date="09/2009 - 04/2012">
+          <p class="font-bold">Aufgabenschwerpunkte:</p>
+          <p> Umsetzen von Webseiten und Web Applikationen mit HTML, CSS und Javascript.</p>
+        </ResumeItem>
+      </ul>
+
+      <h3 class="text-4xl py-14">Aus -und Weiterbildung</h3>
+      <ul
+        class="relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800"
+      >
+        <ResumeItem title="E-Learning" company="udemy" date="09/2012 - heute">
+          <p> Studium verschiedener Kurse im Bereich Webentwicklung, darunter:</p>
+          <ul class="list-disc pl-8">
+            <li> Understanding TypeScript (Maximilian Schwarzmüller)</li>
+            <li>
+              JavaScript - The Complete Guide 2023 (Beginner + Advanced) (Maximilian Schwarzmüller)
+            </li>
+            <li>
+              React - The Complete Guide (incl Hooks, React Router, Redux) (Maximilian
+              Schwarzmüller)
+            </li>
+            <li>
+              Next.js & React - The Complete Guide (incl. Two Paths!) (Maximilian Schwarzmüller)
+            </li>
+          </ul>
+        </ResumeItem>
+        <ResumeItem title="Fortbildung" company="Robotron" date="09/2009 - 04/2010">
+          <p> Fortbildungslehrgang zum Webdesigner, im Robotron Bildungszentrum in Halle</p>
+        </ResumeItem>
+      </ul>
+    </div>
+  </article>
 </Layout>

@@ -1,4 +1,5 @@
 ---
+import { twMerge } from "tailwind-merge";
 interface Props {
   href: string;
   title?: string;
@@ -13,16 +14,20 @@ const { href, title, classAppend, variant = "primary" } = Astro.props;
   variant === "primary" ? (
     <a
       href={href}
-      class:list={[
+      class:list={twMerge([
         "inline-flex items-center justify-center border-2 border-black-500 bg-orange-500 px-7 py-3 font-bold uppercase shadow-custom transition-shadow duration-200 ease-in-out hover:shadow-none",
         classAppend,
-      ]}
+      ])}
       title={title}
     >
       <slot />
     </a>
   ) : (
-    <a href={href} class="group flex items-center font-bold uppercase underline" title={title}>
+    <a
+      href={href}
+      class:list={twMerge(["group flex items-center font-bold uppercase underline", classAppend])}
+      title={title}
+    >
       <slot />
       <svg
         class="ml-2 text-black-500 transition-all duration-300 will-change-transform group-hover:translate-x-1"

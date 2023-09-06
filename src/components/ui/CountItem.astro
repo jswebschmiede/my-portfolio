@@ -7,7 +7,7 @@ interface Props {
 const { count, label } = Astro.props;
 ---
 
-<p class="countup group relative py-4">
+<p class="countup flex items-center md:items-end flex-col group relative py-4">
   <span class="countup__number relative z-10 block text-right font-heading text-5xl font-bold">
     {count}
   </span>
