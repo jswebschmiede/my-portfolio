@@ -10,17 +10,11 @@ const navItems = SITE.links;
 ---
 
 <nav id="main-nav">
-  <ul
-    class="items-center justify-center space-x-10 font-bold uppercase hidden md:flex"
-  >
+  <ul class="items-center justify-center space-x-10 font-bold uppercase hidden md:flex">
     {
       navItems.map((item) => (
         <li>
-          <a
-            href={item.href}
-            class="group relative lg:text-light lg:dark:text-dark"
-            rel="prefetch"
-          >
+          <a href={item.href} class="group relative lg:text-light lg:dark:text-dark" rel="prefetch">
             <span
               class={`absolute -bottom-1 left-0 inline-block duration-300 h-[3px] transition-[width] group-hover:w-5`}
             >
@@ -49,13 +43,25 @@ const navItems = SITE.links;
 <nav class="flex flex-wrap items-center justify-center gap-5">
   <Button classAppend="max-h-10 hidden md:flex" href="/kontakt">Kontakt</Button>
   <button
-    class="hidden md:flex items-center justify-center rounded-full bg-black-500 p-2 text-whitegreen-100"
+    class="flex items-center justify-center rounded-full bg-black-500 p-2 text-whitegreen-100"
     aria-label="Theme Switcher"
     title="Switch between light and dark theme"
     data-toggle-color-scheme
   >
-    <Image id="moon" src={moonFilled as any} alt="" aria-hidden="true" />
-    <Image id="sunny" src={sunnyFilled as any} alt="" aria-hidden="true" />
+    <Image
+      id="moon"
+      class="w-4 h-4 md:w-7 md:h-7"
+      src={moonFilled as any}
+      alt=""
+      aria-hidden="true"
+    />
+    <Image
+      id="sunny"
+      class="w-4 h-4 md:w-7 md:h-7"
+      src={sunnyFilled as any}
+      alt=""
+      aria-hidden="true"
+    />
   </button>
 </nav>
 

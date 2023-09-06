@@ -2,58 +2,22 @@
 import { Image } from "astro:assets";
 import rectangle from "@/assets/rectangle.svg";
 import NavBar from "./NavBar.astro";
-import { SITE } from "@/config";
-import Button from "../Button.astro";
-import moonFilled from "@/assets/moon-filled-transition.svg";
-import sunnyFilled from "@/assets/sunny-filled-loop-transition.svg";
-
-const navItems = SITE.links;
+import MobileNav from "./MobileNav.astro";
 ---
 
 <header
   id="masthead"
   class="main-header z-1 relative z-10 flex w-full items-center justify-between pt-14"
 >
-  <div
-    class="container relative flex w-full max-w-6xl items-center justify-between"
-  >
+  <div class="container relative flex w-full max-w-6xl items-center justify-between">
     <Image
       src={rectangle as any}
-      class="absolute -top-14 left-80 -z-[1] w-28 md:w-auto"
+      class="absolute -top-14 right-9 md:right-auto md:left-80 -z-[1] w-28 md:w-auto"
       alt=""
       aria-hidden="true"
     />
     <NavBar />
   </div>
 
-  <div
-    class="sm:min-w-[70vw] min-w-[90vw] flex justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-32 bg-black-500/90 rounded-lg z-10 backdrop-blur-md"
-  >
-    <ul
-      class="items-center justify-center space-y-4 font-bold uppercase flex flex-col"
-    >
-      {
-        navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="group relative text-whitegreen-100 font-normal"
-              rel="prefetch"
-            >
-              <span
-                class={`absolute -bottom-1 left-0 inline-block duration-300 h-[3px] transition-[width] group-hover:w-5`}
-              >
-                &nbsp;
-              </span>
-              {item.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-
-    <nav class="mt-12">
-      <Button classAppend="max-h-10  flex" href="/kontakt">Kontakt</Button>
-    </nav>
-  </div>
+  <MobileNav />
 </header>
