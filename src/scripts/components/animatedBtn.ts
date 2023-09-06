@@ -1,26 +1,48 @@
 class AnimatedBtn {
   private element: HTMLElement;
   private mobileNav: HTMLElement;
+  private ariaExpanded: boolean = false;
 
   constructor(element: HTMLElement) {
     this.element = element;
     this.mobileNav = document.getElementById("mobile-nav") as HTMLElement;
-    this.element.addEventListener("click", this.toggleBtn);
+    this.element.addEventListener("click", this.clickHandler);
     this.init();
   }
 
-  init = () => {
+  private init = () => {
     this.setCurrentPage();
+    this.addClickHandler();
+    (window as any).AnimateBtn = this;
   };
 
-  setCurrentPage = () => {
+  private clickHandler = (e: Event) => {
+    e.preventDefault();
+    this.toggleBtn();
+  };
+
+  private removeClickHandler() {
+    this.element.removeEventListener("click", this.clickHandler);
+  }
+
+  private addClickHandler() {
+    this.element.addEventListener("click", this.clickHandler);
+  }
+
+  public destroy() {
+    this.removeClickHandler();
+    this.updateAriaExpanded(false);
+    this.toggleMobileNav(false);
+  }
+
+  private setCurrentPage = () => {
     const navLinks = Array.from(this.mobileNav.querySelectorAll("a"));
 
-    // set aria-current and active nav link
+    // Set aria-current and active nav link
     navLinks.forEach((link) => {
       const href = link.getAttribute("href");
       const path = window.location.pathname;
-      const span = link.children[0];
+      const span = link.children[0] as HTMLElement | null;
 
       if (span) {
         if (href === path) {
@@ -35,22 +57,20 @@ class AnimatedBtn {
     });
   };
 
-  toggleMobileNav = () => {
+  private toggleMobileNav = (show: boolean = true) => {
     if (this.mobileNav) {
-      this.mobileNav.classList.toggle("hidden");
+      this.mobileNav.classList.toggle("hidden", !show);
     }
   };
 
-  toggleBtn = () => {
-    // toggle aria-expanded
-    const ariaExpanded = this.element.getAttribute("aria-expanded");
-    if (ariaExpanded === "true") {
-      this.element.setAttribute("aria-expanded", "false");
-      this.toggleMobileNav();
-    } else {
-      this.element.setAttribute("aria-expanded", "true");
-      this.toggleMobileNav();
-    }
+  private updateAriaExpanded(expanded: boolean) {
+    this.ariaExpanded = expanded;
+    this.element.setAttribute("aria-expanded", expanded.toString());
+  }
+
+  private toggleBtn = () => {
+    this.updateAriaExpanded(!this.ariaExpanded);
+    this.toggleMobileNav(this.ariaExpanded);
   };
 }
 
