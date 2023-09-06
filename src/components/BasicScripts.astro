@@ -16,6 +16,7 @@ import { SITE } from "@/config";
   import { totopButton } from "../scripts/components/totop-button";
   import { CountUp } from "../scripts/components/countUp";
   import { AnimatedBtn } from "../scripts/components/animatedBtn";
+  import { NavLinkManager } from "../scripts/components/navLinkManager";
 
   const swup = new Swup({
     plugins: [
@@ -53,7 +54,7 @@ import { SITE } from "@/config";
 
     // query animated btn by aria-controls attribute
     const animatedBtn = document.querySelector('[aria-controls="mobile-menu"]');
-    new AnimatedBtn(animatedBtn);
+    window.AnimatedBtn = new AnimatedBtn(animatedBtn);
 
     // init count up
     const countUp = document.getElementsByClassName("countup__number");
@@ -77,23 +78,7 @@ import { SITE } from "@/config";
     });
 
     const mainNav = document.getElementById("main-nav");
-    const navLinks = Array.from(mainNav.querySelectorAll("a"));
-
-    // set aria-current and active nav link
-    navLinks.forEach((link) => {
-      const href = link.getAttribute("href");
-      const path = window.location.pathname;
-      const span = link.children[0];
-
-      if (href === path) {
-        link.setAttribute("aria-current", "page");
-        span.classList.add("w-5", "bg-black-800");
-      } else {
-        link.removeAttribute("aria-current");
-        span.classList.remove("w-5", "bg-black-800");
-        span.classList.add("w-0", "bg-black-200");
-      }
-    });
+    new NavLinkManager(mainNav);
   };
 
   const unload = () => {
@@ -105,6 +90,8 @@ import { SITE } from "@/config";
     }
     // unload scroll reveal
     ScrollReveal().destroy();
+
+    window.AnimateBtn.destroy();
   };
 
   // run once when page loads
