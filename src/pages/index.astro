@@ -5,6 +5,7 @@ import Layout from "@/layouts/PageLayout.astro";
 import Button from "@/components/ui/Button.astro";
 import manatwork from "@/assets/manatwork.svg";
 import Container from "@/components/ui/Container.astro";
+import ManAtWork from "@/components/ui/ManAtWork.astro";
 
 const meta = {
   title: "Home",
@@ -26,7 +27,7 @@ const meta = {
         </div>
       </div>
       <div class="col-span-7">
-        <Image class="tilt m-auto w-full" src={manatwork as any} alt="Man at Work" />
+        <ManAtWork />
       </div>
     </Container>
   </article>

@@ -9,6 +9,7 @@ import ResumeItem from "@/components/ui/ResumeItem.astro";
 
 import handcoding from "@/assets/hand-coding-bro.svg";
 import Container from "@/components/ui/Container.astro";
+import Handcoding from "@/components/ui/Handcoding.astro";
 
 const meta = {
   title: "Über mich",
@@ -35,7 +36,7 @@ const { skills } = SITE;
         </div>
       </div>
       <div class="col-span-6">
-        <Image class="tilt w-full" src={handcoding as any} alt="Hand Coding" />
+        <Handcoding />
       </div>
       <div class="space-y-8 md:space-y-24 col-span-2 flex flex-col items-center text-center">
         <CountItem count={40} label="Zufriedene Kunden" />
