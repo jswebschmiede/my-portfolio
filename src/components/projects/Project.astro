@@ -11,7 +11,9 @@ const { project } = Astro.props;
 ---
 
 <article class="col-span-6 reveal-fx w-full">
-  <div class="border-2 bg-whitegreen-100 p-4 xs:p-10 shadow-custom tilt">
+  <div
+    class="border-2 bg-whitegreen-100 p-4 xs:p-10 dark:bg-black-500 shadow-custom dark:shadow-custom-d tilt"
+  >
     <Image
       src={project.data.image as ImageMetadata}
       width={450}

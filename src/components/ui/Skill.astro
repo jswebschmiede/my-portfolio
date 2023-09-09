@@ -8,7 +8,7 @@ const { x = "0", y = "0" } = Astro.props;
 ---
 
 <div
-  class="absolute flex cursor-pointer items-center justify-center border-2 bg-orange-500 px-1 py-1 text-xs font-bold text-black-500 shadow-custom transition-shadow duration-200 ease-in-out hover:shadow-none sm:px-3 sm:py-1 sm:text-sm lg:px-6 lg:py-2 lg:text-base"
+  class="absolute flex cursor-pointer items-center justify-center border-2 bg-orange-500 px-1 py-1 text-xs font-bold text-black-500 dark:text-whitegreen-500 shadow-custom dark:shadow-custom-d transition-shadow duration-200 ease-in-out hover:shadow-none hover:dark:shadow-none sm:px-3 sm:py-1 sm:text-sm lg:px-6 lg:py-2 lg:text-base"
   style={`transform: translate3d(${x}, ${y}, 0);`}
 >
   <slot />

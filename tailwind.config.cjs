@@ -68,7 +68,7 @@ module.exports = {
       transitionProperty: {
         mouse: "width, height, margin, opacity",
       },
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             color: "#1e1e1e",
@@ -92,10 +92,26 @@ module.exports = {
             },
           },
         },
-      },
+
+        dark: {
+          css: {
+            color: theme("colors.whitegreen.500"),
+            h1: {
+              color: theme("colors.whitegreen.500"),
+            },
+            h2: {
+              color: theme("colors.whitegreen.500"),
+            },
+            h3: {
+              color: theme("colors.whitegreen.500"),
+            },
+          },
+        },
+      }),
 
       boxShadow: ({ theme }) => ({
         custom: `4px 4px 0 ${theme("colors.black.500")}`,
+        "custom-d": `4px 4px 0 ${theme("colors.whitegreen.500")}`,
       }),
       backgroundImage: ({ theme }) => ({
         circularLightLg: `repeating-radial-gradient( rgba(0,0,0,0.4) 2px, ${theme(
@@ -107,10 +123,19 @@ module.exports = {
         circularLight: `repeating-radial-gradient( rgba(0,0,0,0.4) 2px, ${theme(
           "colors.whitegreen.500",
         )} 5px, ${theme("colors.whitegreen.500")} 60px)`,
+        circularDarkLg: `repeating-radial-gradient( rgba(254,254,254,0.4) 2px, ${theme(
+          "colors.black.500",
+        )} 5px, ${theme("colors.black.500")} 100px)`,
+        circularDarkMd: `repeating-radial-gradient( rgba(254,254,254,0.4) 2px, ${theme(
+          "colors.black.500",
+        )} 5px, ${theme("colors.black.500")} 80px)`,
+        circularDark: `repeating-radial-gradient( rgba(254,254,254,0.4) 2px, ${theme(
+          "colors.black.500",
+        )} 5px, ${theme("colors.black.500")} 60px)`,
       }),
     },
   },
-  darkMode: ["dark", '[data-mode="dark"]'],
+  darkMode: ["class"],
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwind-scrollbar")({ nocompatible: true }),

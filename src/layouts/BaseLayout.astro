@@ -33,7 +33,9 @@ const { language = "en", textDirection = "ltr" } = SITE;
   <head>
     <MetaTags {...meta} />
   </head>
-  <body class="h-full min-h-screen w-full bg-whitegreen-500 font-sans text-black-500 antialiased">
+  <body
+    class="h-full min-h-screen w-full bg-whitegreen-500 dark:bg-black-500 dark:text-whitegreen-500 font-sans text-black-500 antialiased"
+  >
     <slot />
 
     <ProgressToTopButton />

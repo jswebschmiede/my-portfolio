@@ -1,15 +1,13 @@
 ---
 import { SITE } from "@/config";
 import Button from "../Button.astro";
-import moonFilled from "@/assets/moon-filled-transition.svg";
-import sunnyFilled from "@/assets/sunny-filled-loop-transition.svg";
 
 const navItems = SITE.links;
 ---
 
 <div
   id="mobile-nav"
-  class="sm:min-w-[75vw] min-w-[90vw] hidden justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-32 bg-black-500/90 rounded-lg z-10 backdrop-blur-md"
+  class="sm:min-w-[75vw] min-w-[90vw] hidden justify-between items-center flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-32 bg-black-500/90 dark:bg-whitegreen-800/90 rounded-lg z-10 backdrop-blur-md"
 >
   <nav class="flex items-center justify-center flex-col">
     <ul class="space-y-4 font-bold uppercase flex flex-col text-center">
@@ -18,7 +16,7 @@ const navItems = SITE.links;
           <li>
             <a
               href={item.href}
-              class="group relative text-whitegreen-100 font-normal text-lg flex items-center justify-center"
+              class="group relative text-whitegreen-100 dark:text-black-900 font-normal text-lg flex items-center justify-center"
               rel="prefetch"
             >
               <span

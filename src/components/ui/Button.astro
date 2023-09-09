@@ -15,7 +15,7 @@ const { href, title, classAppend, variant = "primary" } = Astro.props;
     <a
       href={href}
       class:list={twMerge([
-        "inline-flex items-center justify-center border-2 border-black-500 bg-orange-500 px-7 py-3 font-bold uppercase shadow-custom transition-shadow duration-200 ease-in-out hover:shadow-none",
+        "inline-flex items-center justify-center border-2 border-black-500 dark:border-whitegreen-500 bg-orange-500 px-7 py-3 font-bold uppercase shadow-custom dark:shadow-custom-d transition-shadow duration-200 ease-in-out hover:shadow-none hover:dark:shadow-none",
         classAppend,
       ])}
       title={title}
@@ -30,7 +30,7 @@ const { href, title, classAppend, variant = "primary" } = Astro.props;
     >
       <slot />
       <svg
-        class="ml-2 text-black-500 transition-all duration-300 will-change-transform group-hover:translate-x-1"
+        class="ml-2 text-black-500 dark:text-whitegreen-500 transition-all duration-300 will-change-transform group-hover:translate-x-1"
         width="27"
         height="28"
         viewBox="0 0 27 28"

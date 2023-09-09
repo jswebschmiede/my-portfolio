@@ -19,11 +19,11 @@ class NavLinkManager {
       if (span) {
         if (href === path) {
           link.setAttribute("aria-current", "page");
-          span.classList.add("w-5", "bg-black-800");
+          span.classList.add("w-5", "bg-black-500", "dark:bg-whitegreen-500");
         } else {
           link.removeAttribute("aria-current");
-          span.classList.remove("w-5", "bg-black-800");
-          span.classList.add("w-0", "bg-black-200");
+          span.classList.remove("w-5", "bg-black-500", "dark:bg-whitegreen-500");
+          span.classList.add("w-0", "bg-black-200", "dark:bg-whitegreen-800");
         }
       }
     });
