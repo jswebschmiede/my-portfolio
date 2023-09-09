@@ -105,13 +105,19 @@ module.exports = {
             h3: {
               color: theme("colors.whitegreen.500"),
             },
+            h4: {
+              color: theme("colors.whitegreen.500"),
+            },
+            a: {
+              color: theme("colors.orange.500"),
+            },
           },
         },
       }),
 
       boxShadow: ({ theme }) => ({
         custom: `4px 4px 0 ${theme("colors.black.500")}`,
-        "custom-d": `4px 4px 0 ${theme("colors.whitegreen.500")}`,
+        "custom-d": `4px 4px 0 ${theme("colors.whitegreen.600")}`,
       }),
       backgroundImage: ({ theme }) => ({
         circularLightLg: `repeating-radial-gradient( rgba(0,0,0,0.4) 2px, ${theme(
