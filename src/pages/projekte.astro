@@ -18,20 +18,18 @@ allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
 ---
 
 <Layout {meta}>
-  <Container className="md:flex">
+  <Container>
     <h1 class="mb-16 text-center col-span-12">Projekte</h1>
-    <div id="projects" class="grid grid-cols-12 gap-12 overflow-hidden">
-      {
-        allProjects.map((project) =>
-          project.data.isFeatured ? (
-            <ProjectFeatured project={project} />
-          ) : (
-            <Project project={project} />
-          ),
-        )
-      }
-    </div>
+    {
+      allProjects.map((project, index) =>
+        index === 0 || index % 3 === 0 ? (
+          <ProjectFeatured project={project} />
+        ) : (
+          <Project project={project} />
+        ),
+      )
+    }
 
-    <button class="ajax-load-more">Mehr Projekte</button>
+    <!-- <nav data-no-swup><Button classAppend="ajax-load-more" href="#">Mehr Projekte</Button></nav> -->
   </Container>
 </Layout>

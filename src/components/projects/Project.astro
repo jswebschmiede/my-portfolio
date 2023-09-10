@@ -14,7 +14,7 @@ const { project } = Astro.props;
   <div
     class="border-2 bg-whitegreen-100 p-4 xs:p-10 dark:bg-black-500 shadow-custom dark:shadow-custom-d tilt"
   >
-    <a href={`/projekte/${project.slug}`}>
+    <a class="block min-h-[218px] bg-black-300" href={`/projekte/${project.slug}`}>
       <Image
         src={project.data.image as ImageMetadata}
         width={450}

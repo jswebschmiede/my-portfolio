@@ -21,6 +21,9 @@ class FakeLoadMore {
   }
 
   private handleClick = (event: Event): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
     let k = 6;
     let j = this.elementItems.length;
     const range = `article:nth-child(n+${k}):nth-child(-n+${j})`;
