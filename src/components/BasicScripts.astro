@@ -17,6 +17,7 @@ import { SITE } from "@/config";
   import { CountUp } from "../scripts/components/countUp";
   import { AnimatedBtn } from "../scripts/components/animatedBtn";
   import { NavLinkManager } from "../scripts/components/navLinkManager";
+  import { FakeLoadMore } from "../scripts/components/fakeLoadMore";
 
   const swup = new Swup({
     plugins: [
@@ -79,6 +80,11 @@ import { SITE } from "@/config";
 
     const mainNav = document.getElementById("main-nav");
     new NavLinkManager(mainNav);
+
+    const loadMore = document.getElementById("projects");
+    if (loadMore) {
+      new FakeLoadMore(loadMore);
+    }
   };
 
   const unload = () => {

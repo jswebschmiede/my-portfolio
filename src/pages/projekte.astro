@@ -4,6 +4,7 @@ import Layout from "@/layouts/PageLayout.astro";
 import ProjectFeatured from "@/components/projects/ProjectFeatured.astro";
 import Project from "@/components/projects/Project.astro";
 import Container from "@/components/ui/Container.astro";
+import Button from "@/components/ui/Button.astro";
 
 const meta = {
   title: "Projekte",
@@ -11,19 +12,26 @@ const meta = {
 };
 
 const allProjects = await getCollection("projects");
+
+// sort projects by isFeatured
+allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
 ---
 
 <Layout {meta}>
-  <Container>
+  <Container className="md:flex">
     <h1 class="mb-16 text-center col-span-12">Projekte</h1>
-    {
-      allProjects.map((project) =>
-        project.data.isFeatured ? (
-          <ProjectFeatured project={project} />
-        ) : (
-          <Project project={project} />
-        ),
-      )
-    }
+    <div id="projects" class="grid grid-cols-12 gap-12 overflow-hidden">
+      {
+        allProjects.map((project) =>
+          project.data.isFeatured ? (
+            <ProjectFeatured project={project} />
+          ) : (
+            <Project project={project} />
+          ),
+        )
+      }
+    </div>
+
+    <button class="ajax-load-more">Mehr Projekte</button>
   </Container>
 </Layout>

@@ -1,3 +1,18 @@
-<div class="container flex flex-col md:grid max-w-6xl items-center gap-12 py-32 grid-cols-12">
+---
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div
+  class:list={twMerge(
+    "container flex flex-col md:grid max-w-6xl items-center gap-12 py-32 grid-cols-12",
+    className,
+  )}
+>
   <slot />
 </div>
