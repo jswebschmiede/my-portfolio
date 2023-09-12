@@ -51,7 +51,7 @@ import { SITE } from "@/config";
 
     // init totop button
     const progressWrap = document.querySelector(".progress-wrap");
-    new totopButton(progressWrap);
+    if (progressWrap) new totopButton(progressWrap);
 
     // query animated btn by aria-controls attribute
     const animatedBtn = document.querySelector('[aria-controls="mobile-menu"]');
@@ -81,10 +81,10 @@ import { SITE } from "@/config";
     const mainNav = document.getElementById("main-nav");
     new NavLinkManager(mainNav);
 
-    // const loadMore = document.getElementById("projects");
-    // if (loadMore) {
-    //   new FakeLoadMore(loadMore);
-    // }
+    const loadMore = document.querySelector(".projects");
+    if (loadMore) {
+      new FakeLoadMore(loadMore);
+    }
   };
 
   const unload = () => {

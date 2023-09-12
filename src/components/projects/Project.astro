@@ -10,9 +10,9 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="col-span-6 w-full reveal-fx">
+<article class="col-span-6 w-full">
   <div
-    class="border-2 bg-whitegreen-100 p-4 xs:p-10 dark:bg-black-500 shadow-custom dark:shadow-custom-d tilt"
+    class="border-2 bg-whitegreen-100 p-4 xs:p-10 dark:bg-black-500 shadow-custom dark:shadow-custom-d tilt min-h-[490px] will-change-transform"
   >
     <a class="block min-h-[218px] bg-black-300" href={`/projekte/${project.slug}`}>
       <Image

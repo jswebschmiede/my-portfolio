@@ -18,7 +18,7 @@ allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
 ---
 
 <Layout {meta}>
-  <Container>
+  <Container className="projects pb-16">
     <h1 class="mb-16 text-center col-span-12">Projekte</h1>
     {
       allProjects.map((project, index) =>
@@ -29,7 +29,8 @@ allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
         ),
       )
     }
-
-    <!-- <nav data-no-swup><Button classAppend="ajax-load-more" href="#">Mehr Projekte</Button></nav> -->
   </Container>
+  <nav class="flex justify-center pb-16" data-no-swup>
+    <Button classAppend="ajax-load-more" href="#">Alle Projekte</Button>
+  </nav>
 </Layout>
