@@ -8,8 +8,10 @@ import Container from "@/components/ui/Container.astro";
 import ManAtWork from "@/components/ui/ManAtWork.astro";
 
 const meta = {
-  title: "Home",
-  description: "Home page description",
+  title: "Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Erfahrung & Leidenschaft",
+
+  description:
+    "Erfahren Sie mehr über Jörg Schöneburg, einen leidenschaftlichen Full-Stack Entwickler aus Altenburg mit umfangreicher Expertise. Entdecken Sie maßgeschneiderte Web-Lösungen für Ihr Projekt",
 };
 ---
 
@@ -22,7 +24,14 @@ const meta = {
           Full-Stack Entwickler aus Altenburg</h2
         >
         <div class="flex items-center gap-9">
-          <Button href="#" title="Profil herunterladen">Profil</Button>
+          <Button
+            href="/profil-joerg-schoeneburg.pdf"
+            target="_blank"
+            download="profil-joerg-schoeneburg"
+            title="Profil herunterladen"
+          >
+            Profil
+          </Button>
           <Button variant={"secondary"} href="/ueber-mich#skills">Meine Skills</Button>
         </div>
       </div>

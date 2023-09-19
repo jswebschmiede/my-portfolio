@@ -4,10 +4,12 @@ interface Props {
   href: string;
   title?: string;
   classAppend?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
   variant?: "primary" | "secondary";
+  download?: string;
 }
 
-const { href, title, classAppend, variant = "primary" } = Astro.props;
+const { href, title, classAppend, download, variant = "primary", target = "" } = Astro.props;
 ---
 
 {
@@ -19,6 +21,8 @@ const { href, title, classAppend, variant = "primary" } = Astro.props;
         classAppend,
       ])}
       title={title}
+      {...(target ? { target: target } : {})}
+      {...(download ? { download: download } : {})}
     >
       <slot />
     </a>

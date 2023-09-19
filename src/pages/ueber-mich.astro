@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { SITE } from "@/config";
 import Layout from "@/layouts/PageLayout.astro";
 
@@ -7,13 +6,15 @@ import Skill from "@/components/ui/Skill.astro";
 import CountItem from "@/components/ui/CountItem.astro";
 import ResumeItem from "@/components/ui/ResumeItem.astro";
 
-import handcoding from "@/assets/hand-coding-bro.svg";
 import Container from "@/components/ui/Container.astro";
 import Handcoding from "@/components/ui/Handcoding.astro";
 
 const meta = {
-  title: "Über mich",
-  description: "Home page description",
+  title:
+    "Jörg Schöneburg - Full-Stack Entwickler mit über 8 Jahren Erfahrung - Maßgeschneiderte Web-Lösungen",
+
+  description:
+    "Erfahren Sie mehr über mich, einen Full-Stack Entwickler mit mehr als 8 Jahren Erfahrung in der Erstellung hochwertiger Websites und Anwendungen. Ich biete maßgeschneiderte Lösungen, die Ihren Anforderungen entsprechen und ein reibungsloses Benutzererlebnis garantieren.",
 };
 
 const { skills } = SITE;
@@ -26,8 +27,9 @@ const { skills } = SITE;
         <div class="prose dark:prose-dark text-center md:text-left">
           <h1 class="text-5xl md:text-7xl">Über mich</h1>
           <p>
-            Hallo ich bin Jörg, ich bin ein leidenschaftlicher Webentwickler mit mehr als 8 Jahren
-            Erfahrung in der Erstellung von ansprechenden und funktionalen Webanwendungen.
+            Als Full-Stack Entwickler mit über 8 Jahren Erfahrung verfüge ich über umfangreiche
+            Kenntnisse in der Entwicklung von hochwertigen Websites und Anwendungen, sowohl im
+            Backend als auch im Frontend
           </p>
           <p>
             Mein Ziel ist es, maßgeschneiderte Lösungen zu entwickeln, die den Anforderungen meiner
@@ -100,7 +102,7 @@ const { skills } = SITE;
       <ul
         class="relative before:absolute before:top-0 before:left-4 before:bottom-0 before:w-[3px] before:bg-black-800"
       >
-        <ResumeItem title="E-Learning" company="udemy" date="09/2012 - heute">
+        <ResumeItem title="E-Learning" company="udemy" date="2012 - heute">
           <p class="font-bold pb-4"
             >Studium verschiedener Kurse im Bereich Webentwicklung, darunter:</p
           >

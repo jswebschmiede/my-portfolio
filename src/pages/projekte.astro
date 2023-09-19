@@ -7,8 +7,8 @@ import Container from "@/components/ui/Container.astro";
 import Button from "@/components/ui/Button.astro";
 
 const meta = {
-  title: "Projekte",
-  description: "Home page description",
+  title: "Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Projektübersicht",
+  description: "Projekte die ich erfolgreich umgesetzt habe.",
 };
 
 const allProjects = await getCollection("projects");
@@ -31,6 +31,6 @@ allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
     }
   </Container>
   <nav class="flex justify-center pb-16" data-no-swup>
-    <Button classAppend="ajax-load-more" href="#">Alle Projekte</Button>
+    <Button classAppend="ajax-load-more" href="#">Mehr Projekte</Button>
   </nav>
 </Layout>
