@@ -4,10 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 import mdx from "@astrojs/mdx";
 
-const sites = [
-  "https://master.dpoxj8hd9osr0.amplifyapp.com/",
-  "https://portfolio.joerg-schoeneburg.de/",
-];
+const sites = ["https://master.dpoxj8hd9osr0.amplifyapp.com/", "https://joerg-schoeneburg.de/"];
 
 // https://astro.build/config
 export default defineConfig({
