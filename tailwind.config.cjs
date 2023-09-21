@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+
+  presets: [require("./tailwind.typography.config.cjs")],
+
   theme: {
     screens: {
       xs: "375px",
@@ -68,52 +71,6 @@ module.exports = {
       transitionProperty: {
         mouse: "width, height, margin, opacity",
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: "#1e1e1e",
-            h1: {
-              fontSize: "4.5rem",
-              lineHeight: 1,
-              marginBottom: "2.25rem",
-              color: "#1e1e1e",
-            },
-            h2: {
-              fontSize: "4.5rem",
-              lineHeight: 1,
-              marginBottom: "2.25rem",
-              color: "#1e1e1e",
-            },
-            h3: {
-              fontSize: "2.5rem",
-              lineHeight: "2rem",
-              marginBottom: "2.25rem",
-              color: "#1e1e1e",
-            },
-          },
-        },
-
-        dark: {
-          css: {
-            color: theme("colors.whitegreen.500"),
-            h1: {
-              color: theme("colors.whitegreen.500"),
-            },
-            h2: {
-              color: theme("colors.whitegreen.500"),
-            },
-            h3: {
-              color: theme("colors.whitegreen.500"),
-            },
-            h4: {
-              color: theme("colors.whitegreen.500"),
-            },
-            a: {
-              color: theme("colors.orange.500"),
-            },
-          },
-        },
-      }),
 
       boxShadow: ({ theme }) => ({
         custom: `4px 4px 0 ${theme("colors.black.500")}`,
