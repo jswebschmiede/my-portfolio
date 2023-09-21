@@ -9,6 +9,9 @@ interface Props {
 }
 
 const { icon, title, text, isMail = false } = Astro.props;
+
+// split text at @ to get the username and domain
+const [username, domain] = text.split("@");
 ---
 
 <li class="mb-8">
@@ -26,8 +29,7 @@ const { icon, title, text, isMail = false } = Astro.props;
         {
           isMail ? (
             <p>
-              <a href={`mailto:${text}`}>{text}</a>
-            </p>
+              <p data-obfuscate-email data-username={username} data-domain={domain}></p>
           ) : (
             <p>{text}</p>
           )

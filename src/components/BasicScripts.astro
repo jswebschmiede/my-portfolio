@@ -18,6 +18,7 @@ import { SITE } from "@/config";
   import { AnimatedBtn } from "../scripts/components/animatedBtn";
   import { NavLinkManager } from "../scripts/components/navLinkManager";
   import { FakeLoadMore } from "../scripts/components/fakeLoadMore";
+  import { ObfuscateEmail } from "../scripts/components/obfuscateEmail";
 
   const swup = new Swup({
     plugins: [
@@ -48,6 +49,8 @@ import { SITE } from "@/config";
 
     // init mouse cursor
     followCursor();
+
+    new ObfuscateEmail();
 
     // init totop button
     const progressWrap = document.querySelector(".progress-wrap");
