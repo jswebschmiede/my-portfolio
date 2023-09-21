@@ -51,11 +51,11 @@
     @apply -rotate-45 -translate-y-1;
   }
 
-  .grid article:nth-child(10n + 1):not(:nth-last-child(-n + 3)),
+  /* .grid article:nth-child(10n + 1):not(:nth-last-child(-n + 3)),
   .grid article:nth-child(10n + 8):not(:last-child) {
     grid-row: auto / span 2;
   }
   .grid article:nth-child(5) ~ article {
     @apply hidden;
-  }
+  } */
 }
