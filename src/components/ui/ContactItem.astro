@@ -28,8 +28,7 @@ const [username, domain] = text.split("@");
       <p class="text-sm text-gray-500">
         {
           isMail ? (
-            <p>
-              <p data-obfuscate-email data-username={username} data-domain={domain}></p>
+            <p data-obfuscate-email data-username={username} data-domain={domain} />
           ) : (
             <p>{text}</p>
           )
