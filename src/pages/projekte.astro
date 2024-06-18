@@ -13,7 +13,9 @@ const meta = {
 const allProjects = await getCollection("projects");
 
 // sort projects by isFeatured
-allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
+// allProjects.sort((a, b) => (a.data.isFeatured < b.data.isFeatured ? 1 : -1));
+
+allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
 
 <Layout {meta}>
