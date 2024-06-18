@@ -2,6 +2,8 @@ class FakeLoadMore {
   private element: HTMLElement;
   private elementItems: NodeListOf<HTMLElement>;
   private loadmoreBtn: HTMLElement | null;
+  private k = 5;
+  private j = 9;
 
   constructor(element: HTMLElement) {
     this.element = element;
@@ -24,19 +26,19 @@ class FakeLoadMore {
     event.preventDefault();
     event.stopPropagation();
 
-    let k = 6;
-    let j = this.elementItems.length;
-    const range = `article:nth-child(n+${k}):nth-child(-n+${j})`;
+    const range = `article:nth-child(n+${this.k}):nth-child(-n+${this.j})`;
+
+    console.log(range);
 
     this.element.querySelectorAll(range).forEach((item) => {
       item.setAttribute("style", "display: block");
     });
 
-    if (this.elementItems.length <= j) {
+    if (this.elementItems.length <= this.j) {
       this.loadmoreBtn?.classList.add("hidden");
     } else {
-      k += 5;
-      j += 5;
+      this.k += 4;
+      this.j += 4;
     }
   };
 }

@@ -4,6 +4,7 @@ import Layout from "@/layouts/PageLayout.astro";
 import ProjectFeatured from "@/components/projects/ProjectFeatured.astro";
 import Project from "@/components/projects/Project.astro";
 import Container from "@/components/ui/Container.astro";
+import Button from "@/components/ui/Button.astro";
 
 const meta = {
   title: "Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Projektübersicht",
@@ -19,20 +20,22 @@ allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 ---
 
 <Layout {meta}>
-  <Container className="projects pb-16">
+  <Container className="pb-16">
     <h1 class="mb-0 text-center col-span-12">Projekte</h1>
     <h3 class="-mt-8 mb-16 text-center col-span-12">Eine Auswahl meiner bisherigen Projekte</h3>
-    {
-      allProjects.map((project, index) =>
-        index === 0 || index % 3 === 0 ? (
-          <ProjectFeatured project={project} />
-        ) : (
-          <Project project={project} />
-        ),
-      )
-    }
+    <Container className="projects col-span-12 py-0">
+      {
+        allProjects.map((project, index) =>
+          index === 0 || index % 3 === 0 ? (
+            <ProjectFeatured project={project} />
+          ) : (
+            <Project project={project} />
+          ),
+        )
+      }
+    </Container>
   </Container>
-  <!-- <nav class="flex justify-center pb-16" data-no-swup>
+  <nav class="flex justify-center pb-16" data-no-swup>
     <Button classAppend="ajax-load-more" href="#">Mehr Projekte</Button>
-  </nav> -->
+  </nav>
 </Layout>

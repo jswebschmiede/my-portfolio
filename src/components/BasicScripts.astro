@@ -84,10 +84,10 @@ import { SITE } from "@/config";
     const mainNav = document.getElementById("main-nav");
     new NavLinkManager(mainNav);
 
-    // const loadMore = document.querySelector(".projects");
-    // if (loadMore) {
-    //   new FakeLoadMore(loadMore);
-    // }
+    const loadMore = document.querySelector(".projects");
+    if (loadMore) {
+      new FakeLoadMore(loadMore);
+    }
   };
 
   const unload = () => {
@@ -118,61 +118,61 @@ import { SITE } from "@/config";
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
-// Add class to html tag if JavaScript is enabled
-document.documentElement.classList.add("js");
+  // Add class to html tag if JavaScript is enabled
+  document.documentElement.classList.add("js");
 
-// Toggle dark mode icon
-function toggleDarkmodeIcon() {
-  const moon = document.getElementById("moon");
-  const sunny = document.getElementById("sunny");
-  const isDarkMode = document.documentElement.classList.contains("dark");
+  // Toggle dark mode icon
+  function toggleDarkmodeIcon() {
+    const moon = document.getElementById("moon");
+    const sunny = document.getElementById("sunny");
+    const isDarkMode = document.documentElement.classList.contains("dark");
 
-  sunny.classList.toggle("hidden", isDarkMode);
-  moon.classList.toggle("hidden", !isDarkMode);
-}
-
-// Add class to html tag if dark theme is enabled
-function applyTheme(theme) {
-  document.documentElement.classList.toggle("dark", theme === "dark");
-  toggleDarkmodeIcon();
-}
-
-// Attach event to element
-function attachEvent(selector, event, fn) {
-  const matches = typeof selector === "string" ? document.querySelectorAll(selector) : selector;
-  if (matches && matches.length) {
-    matches.forEach((elem) => {
-      elem.addEventListener(event, (e) => fn(e, elem), false);
-    });
+    sunny.classList.toggle("hidden", isDarkMode);
+    moon.classList.toggle("hidden", !isDarkMode);
   }
-}
 
-// Apply theme
-if (
-  (defaultTheme && defaultTheme.endsWith(":only")) ||
-  (!localStorage.theme && defaultTheme !== "system")
-) {
-  applyTheme(defaultTheme.replace(":only", ""));
-} else if (
-  localStorage.theme === "dark" ||
-  (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-  applyTheme("dark");
-} else {
-  applyTheme("light");
-}
-
-// on load
-window.onload = function () {
-  // Toggle dark mode
-  attachEvent("[data-toggle-color-scheme]", "click", function () {
-    if (defaultTheme.endsWith(":only")) {
-      return;
-    }
-
-    document.documentElement.classList.toggle("dark");
-    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+  // Add class to html tag if dark theme is enabled
+  function applyTheme(theme) {
+    document.documentElement.classList.toggle("dark", theme === "dark");
     toggleDarkmodeIcon();
-  });
-};
+  }
+
+  // Attach event to element
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === "string" ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  // Apply theme
+  if (
+    (defaultTheme && defaultTheme.endsWith(":only")) ||
+    (!localStorage.theme && defaultTheme !== "system")
+  ) {
+    applyTheme(defaultTheme.replace(":only", ""));
+  } else if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+
+  // on load
+  window.onload = function () {
+    // Toggle dark mode
+    attachEvent("[data-toggle-color-scheme]", "click", function () {
+      if (defaultTheme.endsWith(":only")) {
+        return;
+      }
+
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      toggleDarkmodeIcon();
+    });
+  };
 </script>
