@@ -16,9 +16,36 @@ const { footerLinks } = SITE;
       </p>
 
       <nav class="flex flex-col text-center xs:flex-row gap-2 xs:gap-8 font-bold">
+        <a
+          class="font-bold uppercase flex items-center gap-2"
+          href="https://github.com/jswebschmiede"
+          target="_blank"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-github"
+            ><path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path></svg
+          >
+          <span>Github</span>
+        </a>
         {
-          footerLinks.map(({ href, name }) => (
-            <a class="font-bold uppercase group relative" href={href} rel="prefetch">
+          footerLinks.map(({ href, name, target }) => (
+            <a
+              class="font-bold uppercase group relative"
+              href={href}
+              rel="prefetch"
+              target={target ? target : null}
+            >
               {name}
               <span class="absolute -bottom-1 left-0 inline-block w-0 bg-black-200 duration-300 h-[3px] transition-[width] group-hover:w-5">
                 &nbsp;
