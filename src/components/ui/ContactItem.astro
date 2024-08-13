@@ -15,14 +15,14 @@ const [username, domain] = text.split("@");
 ---
 
 <li class="mb-8">
-  <div class="flex items-center">
+  <div class="flex gap-8 sm:gap-0 items-center flex-col sm:flex-row">
     <div
-      class="aspect-square font-heading text-center relative flex h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-black-500 dark:border-whitegreen-500 bg-orange-500 text-[34px] font-black shadow-custom transition-shadow duration-200 dark:shadow-custom-d hover:shadow-none after:absolute after:left-full after:top-1/2 after:w-10 after:h-[3px] after:mt-[-1px] after:bg-black-500 after:dark:bg-whitegreen-500"
+      class="aspect-square font-heading text-center relative flex w-[3.9375rem] sm:w-auto h-[3.9375rem] items-center justify-center rounded-full border-2 border-black-500 dark:border-whitegreen-500 bg-orange-500 text-[34px] font-black shadow-custom transition-shadow duration-200 dark:shadow-custom-d hover:shadow-none after:hidden after:sm:block after:absolute after:left-full after:top-1/2 after:w-10 after:h-[3px] after:mt-[-1px] after:bg-black-500 after:dark:bg-whitegreen-500"
     >
       <Icon class="w-6 h-6" name={icon} />
     </div>
 
-    <div class="pl-20">
+    <div class="sm:pl-20 text-center sm:text-left">
       <h4>{title}</h4>
 
       <p class="text-sm text-gray-500">

@@ -31,10 +31,10 @@ const { project } = Astro.props;
       <!-- <p class="mb-1 text-sm font-bold text-orange-500">
         <span class="mr-2"> Vorgestelltes Projekt</span>
       </p> -->
-      <h3 class="mt-0 mb-5 text-2xl xs:text-4xl md:text-5xl font-black">
+      <h3 class="mt-0 mb-5 text-2xl xs:text-4xl md:text-5xl font-black hyphens-auto break-words">
         {project.data.title}
       </h3>
-      <p>{project.data.description}</p>
+      <p class="hidden md:block">{project.data.description}</p>
       <Button
         classAppend="text-xs xs:text-base"
         href={`/projekte/${project.slug}`}
