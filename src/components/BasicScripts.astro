@@ -19,6 +19,7 @@ import { SITE } from "@/config";
   import { NavLinkManager } from "../scripts/components/navLinkManager";
   import { FakeLoadMore } from "../scripts/components/fakeLoadMore";
   import { ObfuscateEmail } from "../scripts/components/obfuscateEmail";
+  import DraggableBackground from "../scripts/components/draggableBackground";
 
   const swup = new Swup({
     plugins: [
@@ -45,6 +46,14 @@ import { SITE } from "@/config";
         speed: 400,
         perspective: 1000,
       });
+    }
+
+    // Initialisiere für alle draggable Container
+
+    // init draggable background
+    const draggableBackgrounds = document.querySelector("[data-draggable]");
+    if (draggableBackgrounds) {
+      new DraggableBackground(draggableBackgrounds);
     }
 
     // init mouse cursor
@@ -101,6 +110,9 @@ import { SITE } from "@/config";
     ScrollReveal().destroy();
 
     window.AnimateBtn.destroy();
+
+    // unload draggable background
+    DraggableBackground.cleanupAll();
   };
 
   // run once when page loads

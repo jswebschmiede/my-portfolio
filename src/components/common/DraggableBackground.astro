@@ -1,0 +1,34 @@
+---
+interface Props {
+  imageUrl: string; // URL des Hintergrundbildes
+  height?: string; // Höhe des Containers
+  alt: string; // Alternativer Text für Accessibility
+  imageHeight: number; // Höhe des Hintergrundbildes
+  imageWidth: number; // Breite des Hintergrundbildes
+}
+
+const { imageUrl, height = "600px", alt, imageHeight, imageWidth } = Astro.props;
+---
+
+<div
+  class="draggable-background-container overflow-hidden relative cursor-grab active:cursor-grabbing w-full touch-none h-[200px] sm:h-[400px] lg:h-[var(--draggable-background-height)]"
+  style={`--draggable-background-height: ${height};`}
+  role="img"
+  aria-label={alt}
+  data-draggable
+>
+  <div
+    class="draggable-background absolute w-full bg-[length:100%_auto] bg-center transition-transform duration-100 ease-in-out"
+    style={`background-image: url(${imageUrl});`}
+    data-image-height={imageHeight}
+    data-image-width={imageWidth}
+    data-draggable-element
+  >
+  </div>
+</div>
+
+<style>
+  :root {
+    --draggable-background-height: 600px;
+  }
+</style>
