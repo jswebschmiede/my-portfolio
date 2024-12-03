@@ -1,10 +1,10 @@
 ---
 interface Props {
-  imageUrl: string; // URL des Hintergrundbildes
-  height?: string; // Höhe des Containers
-  alt: string; // Alternativer Text für Accessibility
-  imageHeight: number; // Höhe des Hintergrundbildes
-  imageWidth: number; // Breite des Hintergrundbildes
+  imageUrl: string;
+  height?: string;
+  alt: string;
+  imageHeight: number;
+  imageWidth: number;
 }
 
 const { imageUrl, height = "600px", alt, imageHeight, imageWidth } = Astro.props;
@@ -16,7 +16,26 @@ const { imageUrl, height = "600px", alt, imageHeight, imageWidth } = Astro.props
   role="img"
   aria-label={alt}
   data-draggable
+  aria-scrollable="false"
 >
+  <!-- Scroll Indikator -->
+  <div
+    class="scroll-indicator absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden flex-col items-center gap-1"
+    data-scroll-indicator
+    aria-hidden="true"
+  >
+    <span
+      class="text-[length:0.6rem] font-medium text-whitegreen-100 bg-orange-500/90 px-3 py-1 rounded-full shadow-sm"
+    >
+      Scroll mich
+    </span>
+    <svg class="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+        transform="rotate(90 12 12)"></path>
+    </svg>
+  </div>
+
   <div
     class="draggable-background absolute w-full bg-[length:100%_auto] bg-center transition-transform duration-100 ease-in-out"
     style={`background-image: url(${imageUrl});`}
@@ -30,5 +49,20 @@ const { imageUrl, height = "600px", alt, imageHeight, imageWidth } = Astro.props
 <style>
   :root {
     --draggable-background-height: 600px;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: translateY(0) translateX(-50%);
+    }
+    50% {
+      transform: translateY(5px) translateX(-50%);
+    }
+  }
+
+  .scroll-indicator {
+    animation: pulse 2s ease-in-out infinite;
+    display: flex !important;
   }
 </style>

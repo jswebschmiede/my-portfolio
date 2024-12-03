@@ -3,6 +3,7 @@ class DraggableBackground {
 
   container: HTMLElement;
   background: HTMLElement | null;
+  scrollIndicator: HTMLElement | null;
   isDragging = false;
   startY = 0;
   currentY = 0;
@@ -14,6 +15,7 @@ class DraggableBackground {
   constructor(container: HTMLElement) {
     this.container = container;
     this.background = container.querySelector("[data-draggable-element]") as HTMLElement | null;
+    this.scrollIndicator = container.querySelector("[data-scroll-indicator]") as HTMLElement | null;
 
     if (!this.background) return;
 
@@ -55,7 +57,7 @@ class DraggableBackground {
     if (!this.isDragging) return;
 
     const currentY = this.getY(e);
-    const deltaY = (currentY - this.startY) * 1.5;
+    const deltaY = (currentY - this.startY) * 1.25;
     this.targetY = Math.min(0, Math.max(this.maxScroll, this.currentY + deltaY));
   }
 
@@ -127,6 +129,15 @@ class DraggableBackground {
     // Stelle sicher, dass die aktuelle Position innerhalb der neuen Grenzen liegt
     this.targetY = Math.min(0, Math.max(this.maxScroll, this.targetY));
     this.currentY = this.targetY;
+
+    // Zeige/Verstecke Scroll-Indikator basierend auf Scrollbarkeit
+    if (this.scrollIndicator) {
+      const isScrollable = actualImageHeight > containerHeight;
+      this.scrollIndicator.style.display = isScrollable ? "block" : "none";
+
+      // Update ARIA-Attribute
+      this.container.setAttribute("aria-scrollable", isScrollable ? "true" : "false");
+    }
   }
 
   // Statische Cleanup-Methode
