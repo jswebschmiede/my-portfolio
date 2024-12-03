@@ -71,7 +71,15 @@ module.exports = {
       transitionProperty: {
         mouse: "width, height, margin, opacity",
       },
-
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-in forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
       boxShadow: ({ theme }) => ({
         custom: `4px 4px 0 ${theme("colors.black.500")}`,
         "custom-d": `4px 4px 0 ${theme("colors.whitegreen.600")}`,
