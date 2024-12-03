@@ -4,14 +4,12 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.0.0",
-    "@astrojs/prefetch": "^0.4.0",
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^5.0.0",
     "@fontsource/catamaran": "^5.0.8",

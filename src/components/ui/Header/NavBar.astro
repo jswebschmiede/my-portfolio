@@ -13,7 +13,7 @@ const navItems = SITE.links;
     {
       navItems.map((item) => (
         <li>
-          <a href={item.href} class="group relative" rel="prefetch">
+          <a href={item.href} class="group relative" data-astro-prefetch>
             <span
               class={`absolute -bottom-1 left-0 inline-block duration-300 h-[3px] transition-[width] group-hover:w-5`}
             >
