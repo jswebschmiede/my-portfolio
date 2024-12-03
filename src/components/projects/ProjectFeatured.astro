@@ -17,7 +17,7 @@ const { project } = Astro.props;
     <div class="col-span-7">
       <a class="block" href={`/projekte/${project.slug}`}>
         <Image
-          src={project.data.image as ImageMetadata}
+          src={project.data.thumbnail as ImageMetadata}
           width={750}
           height={750 / 1.5}
           alt={project.data.image_alt}

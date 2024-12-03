@@ -16,7 +16,7 @@ const { project } = Astro.props;
   >
     <a class="block" href={`/projekte/${project.slug}`}>
       <Image
-        src={project.data.image as ImageMetadata}
+        src={project.data.thumbnail as ImageMetadata}
         width={450}
         height={450 / 1.5}
         alt={project.data.image_alt}
