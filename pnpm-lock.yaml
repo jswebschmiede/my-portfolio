@@ -26,6 +26,9 @@ importers:
       astro:
         specifier: ^3.0.3
         version: 3.6.5(@types/node@22.10.1)(terser@5.36.0)(typescript@5.7.2)
+      astro-icon:
+        specifier: ^0.8.0
+        version: 0.8.2
       astro-seo:
         specifier: ^0.8.0
         version: 0.8.4(prettier-plugin-astro@0.12.3)(prettier@3.4.1)(typescript@5.7.2)
@@ -1316,6 +1319,9 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-icon@0.8.2:
+    resolution: {integrity: sha512-+LgbDM6ku760pwoRwc7UfkVKy9V+QiRfZory4KzdMqVOYKyKSM1rmJ3CXcR7mezTd4pKJnH+guxR4ySpcn8fGg==}
 
   astro-seo@0.8.4:
     resolution: {integrity: sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw==}
@@ -3422,6 +3428,10 @@ packages:
 
   resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
+    engines: {node: '>=8'}
+
+  resolve-pkg@2.0.0:
+    resolution: {integrity: sha512-+1lzwXehGCXSeryaISr6WujZzowloigEofRB+dj75y9RRa/obVcYgbHJd53tdYw8pvZj8GojXaaENws8Ktw/hQ==}
     engines: {node: '>=8'}
 
   resolve@1.22.8:
@@ -5648,6 +5658,11 @@ snapshots:
       is-shared-array-buffer: 1.0.3
 
   astring@1.9.0: {}
+
+  astro-icon@0.8.2:
+    dependencies:
+      resolve-pkg: 2.0.0
+      svgo: 2.8.0
 
   astro-seo@0.8.4(prettier-plugin-astro@0.12.3)(prettier@3.4.1)(typescript@5.7.2):
     dependencies:
@@ -8280,6 +8295,10 @@ snapshots:
   resolve-from@4.0.0: {}
 
   resolve-from@5.0.0: {}
+
+  resolve-pkg@2.0.0:
+    dependencies:
+      resolve-from: 5.0.0
 
   resolve@1.22.8:
     dependencies:
