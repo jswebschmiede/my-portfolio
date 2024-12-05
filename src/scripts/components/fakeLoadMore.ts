@@ -1,6 +1,6 @@
 export class FakeLoadMore {
   private button: HTMLElement | null;
-  private itemsToShow: number = 5;
+  private itemsToShow: number = 6;
   private items: NodeListOf<Element>;
   private container: HTMLElement | null;
 
