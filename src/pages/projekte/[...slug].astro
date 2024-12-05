@@ -16,6 +16,7 @@ export async function getStaticPaths() {
   const allProjects = await getCollection("projects");
   // get number of projects
   const numProjects = allProjects.length;
+  allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
   return allProjects.map((project, index) => ({
     params: { slug: project.slug },
@@ -42,9 +43,7 @@ const meta = {
     <ProjectNav nextProject={nextProject} prevProject={prevProject} />
 
     <DraggableBackground
-      imageUrl={project.data.image.src}
-      imageHeight={project.data.image.height}
-      imageWidth={project.data.image.width}
+      imageUrl={project.data.image}
       height="600px"
       alt={project.data.image_alt}
     />
