@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/PageLayout.astro";
+import Container from "@/components/ui/Container.astro";
+import Button from "@/components/ui/Button.astro";
+
+const meta = {
+  title: "404 - Jörg Schöneburg - Full-Stack Entwickler | Seite nicht gefunden",
+  description: "Seite nicht gefunden.",
+};
+---
+
+<Layout {meta}>
+  <Container>
+    <h1 class="col-span-12 md:mb-16 text-center text-xl xs:text-2xl md:text-7xl"
+      >404 - Seite nicht gefunden</h1
+    >
+    <p class="col-span-12 text-center text-lg xs:text-xl md:text-2xl"
+      >Ups, die von Ihnen gesuchte Seite konnte nicht gefunden werden.</p
+    >
+    <div class="col-span-12 text-center">
+      <Button href="/" variant="primary">Zurück zur Startseite</Button>
+    </div>
+  </Container>
+</Layout>
