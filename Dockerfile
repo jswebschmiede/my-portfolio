@@ -8,6 +8,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine AS runtime
+COPY .docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
