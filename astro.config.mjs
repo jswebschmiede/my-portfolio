@@ -9,7 +9,7 @@ export default defineConfig({
         service: sharpImageService(),
     },
     integrations: [sitemap(), tailwind({ applyBaseStyles: false }), mdx()],
-    site: "https://www.joerg-schoeneburg.de",
+    site: "https://joerg-schoeneburg.de",
     prefetch: true,
     output: "static",
 });
